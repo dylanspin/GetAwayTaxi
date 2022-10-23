@@ -19,10 +19,14 @@ public class FakeSteeringWheel : MonoBehaviour
     [SerializeField] private Vector3 returnPos;
 
     [Header("Controllers")]
+
+    [Tooltip("The grabbing of the steering wheel inputs")]
     [SerializeField] private OVRInput.Button[] grabInputs = new OVRInput.Button[2];
+
+    [Tooltip("Points on the steering wheel that can be grabbed")]
     [SerializeField] private Transform[] grabPoints = new Transform[2];//transforms of the holding points of the steering wheel
+    [Tooltip("Positions of the controllers")]
     [SerializeField] private Transform[] HandPostions = new Transform[2];//controllers
-    [SerializeField] private string[] handTags = {"",""};//controllers tags
 
     [Header("Visuals")]
     private Transform visualSteeringWheel;
@@ -32,7 +36,6 @@ public class FakeSteeringWheel : MonoBehaviour
 
     [Header("Private data")]
     private float steerAngle = 0; // current angle of the steering wheel
-    private bool[] intriggerHand = new bool[2];//if the controllers are in the trigger
     [SerializeField] private bool[] posHeld = new bool[2];//if transform is being held
 
     public void setStart(Transform newWheel,Transform[] newHands,Transform[] newVisuals,Transform[] newHold)
@@ -52,29 +55,6 @@ public class FakeSteeringWheel : MonoBehaviour
         checkGrip();
     }
     
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     string tagName = other.gameObject.tag;
-    //     checkTrigger(true,tagName);
-    // }
-  
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     string tagName = other.gameObject.tag;
-    //     checkTrigger(false,tagName);
-    // }
-    
-    // private void checkTrigger(bool enter,string tagCol)
-    // {
-    //     for(int i=0; i<handTags.Length; i++)
-    //     {
-    //         if(tagCol == handTags[i])
-    //         {
-    //             intriggerHand[i] = enter;
-    //         }
-    //     }
-    // }
-
     private void setFollowHands()
     {
         HandPostions[0].localPosition = realController[0].transform.localPosition;
@@ -93,7 +73,7 @@ public class FakeSteeringWheel : MonoBehaviour
             letgo(1);
         }
 
-        for(int i=0; i<intriggerHand.Length; i++)
+        for(int i=0; i<posHeld.Length; i++)
         {
             if(posHeld[i])//if hand is holding
             {
@@ -105,13 +85,10 @@ public class FakeSteeringWheel : MonoBehaviour
             }
             else
             {
-                // if(intriggerHand[i])
-                // {
                 if(OVRInput.Get(grabInputs[i]))//trigger pressed
                 {
                     posHeld[i] = true;//sets is holding
                 }
-                // }
             }
         }
     }
@@ -254,7 +231,6 @@ public class FakeSteeringWheel : MonoBehaviour
         {
             steerAngle = 0;
         }
-        // Debug.Log(steerAngle);
     }
 
     private void setSteering()//for pc steering

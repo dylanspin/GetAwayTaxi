@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 525672268}
   - component: {fileID: 525672270}
   - component: {fileID: 525672269}
+  - component: {fileID: 4467168680146214859}
   m_Layer: 9
   m_Name: Outline
   m_TagString: Untagged
@@ -308,6 +309,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4467168680146214859
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525672267}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.00000016763806, z: 10.000001}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1170505149
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +665,7 @@ GameObject:
   - component: {fileID: 1775760592}
   - component: {fileID: 1775760594}
   - component: {fileID: 1775760593}
+  - component: {fileID: 3340943893775180459}
   m_Layer: 9
   m_Name: Outline
   m_TagString: Untagged
@@ -723,6 +738,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3340943893775180459
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775760591}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000001, y: 0.000000037252903, z: 10.000001}
+  m_Center: {x: -0.000061035156, y: 0.000061035156, z: -0.00024414062}
 --- !u!1 &1844279261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,12 +1333,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e893796814b71134a9607637dc92aab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  steeringWheel: {fileID: 0}
+  handPos:
+  - {fileID: 0}
+  - {fileID: 0}
+  holdPos:
+  - {fileID: 0}
+  - {fileID: 0}
+  handVis:
+  - {fileID: 0}
+  - {fileID: 0}
   pcPlayer: {fileID: 490261647664914210}
   vrPlayer: {fileID: 1852174989272225059}
   controllerScript: {fileID: 0}
   movementScript: {fileID: 490261646337334557}
   colliderScript: {fileID: 6405215726740731291}
-  steerinScript: {fileID: 0}
   uiScript: {fileID: 490261646337334547}
   statScript: {fileID: 490261646337334556}
   specialScript: {fileID: 444823681}

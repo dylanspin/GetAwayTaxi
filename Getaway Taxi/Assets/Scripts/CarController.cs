@@ -29,7 +29,7 @@ public class CarController : MonoBehaviour
     void Start()
     {
         setStartData();
-        // setStartVr();
+        setStartVr();
     }
 
     private void setStartVr()
