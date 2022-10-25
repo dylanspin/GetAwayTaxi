@@ -27030,7 +27030,7 @@ MonoBehaviour:
   HandPostions:
   - {fileID: 5257896504446144695}
   - {fileID: 8082965714743149248}
-  posHeld: 0000
+  posHeld: 0101
 --- !u!20 &3047861826885161272
 Camera:
   m_ObjectHideFlags: 0

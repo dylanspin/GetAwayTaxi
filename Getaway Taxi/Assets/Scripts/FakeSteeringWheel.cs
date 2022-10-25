@@ -63,25 +63,25 @@ public class FakeSteeringWheel : MonoBehaviour
     
     private void checkGrip()
     {
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            letgo(0);
-        }
+        // if(Input.GetKeyDown(KeyCode.L))
+        // {
+        //     letgo(0);
+        // }
 
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            letgo(1);
-        }
+        // if(Input.GetKeyDown(KeyCode.K))
+        // {
+        //     letgo(1);
+        // }
 
         for(int i=0; i<posHeld.Length; i++)
         {
             if(posHeld[i])//if hand is holding
             {
                 setHandPositions(i);
-                if(!OVRInput.Get(grabInputs[i]))//trigger let go or the distance is to far // || !OVRInput.Get(grabInputs[i])
-                {
-                    letgo(i);//hand lets go
-                }
+                // if(!OVRInput.Get(grabInputs[i]))//trigger let go or the distance is to far // || !OVRInput.Get(grabInputs[i])
+                // {
+                //     letgo(i);//hand lets go
+                // }
             }
             else
             {

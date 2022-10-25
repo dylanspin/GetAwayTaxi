@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DataController : MonoBehaviour
 {
+    /*
+        Not used anymore now we dont want to have save levels
+    */
+    
     [Header("Scripts Data")]
     [SerializeField] MainUiController uiScript;
 

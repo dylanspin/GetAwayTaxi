@@ -11,13 +11,6 @@ public class popUp : MonoBehaviour
         popUpAnim.SetBool("Show",active);
     }
 
-
-    public void newGame()
-    {
-
-    }
-
-
     public void exitGame()
     {
         Application.Quit();
