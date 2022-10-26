@@ -18,6 +18,11 @@ public class MainUiController : MonoBehaviour
         //or to show a intro
     }
 
+    public void overLayLoad()
+    {
+        mainAnim.SetBool("LoadGame",true);
+    }
+
     public void continueGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

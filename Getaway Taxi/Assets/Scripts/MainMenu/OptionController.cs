@@ -5,7 +5,12 @@ using UnityEngine;
 public class OptionController : MonoBehaviour
 {
     [Header("Scripts")]
+
+    [Tooltip("All individual options")]
     [SerializeField] private Option[] options;
+
+    [Tooltip("All individual options")]
+    [SerializeField] private AudioController audioScript;
 
     [Header("Setting Data")]
     private int musicVolume = 50;
@@ -36,6 +41,9 @@ public class OptionController : MonoBehaviour
     {
         options[0].setData(musicVolume);
         options[1].setData(mainVolume);
+
+
+        audioScript.setOptions(true,musicVolume,mainVolume);//sets audio options in the main menu
     }
 
     public void saveOption(int option, int newValue)
@@ -52,6 +60,7 @@ public class OptionController : MonoBehaviour
             break;
         } 
 
+        audioScript.setOptions(false,musicVolume,mainVolume);//sets audio options in the main menu
         Save.saveSettingData(this);
     }
 }

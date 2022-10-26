@@ -28,15 +28,24 @@ public class Ignition : MonoBehaviour
 
     [Header("Private data")]
     private Vector3 lastRot;
+    private Quaternion heldRot;
 
-    [SerializeField] bool holding = true;
-
-    void Update()
+    private void Start()
     {
+        heldRot = hand.localRotation;
+    }
+
+    private void Update()
+    {
+        if(OVRInput.GetDown(grabInput))
+        {
+            heldRot = hand.localRotation;
+        }
+
         bool getInput = OVRInput.Get(grabInput);
         handImage.SetActive(getInput);
 
-        if(holding)//trigger hold
+        if(getInput)//trigger hold
         {
             lastRot = hand.localEulerAngles;
             lastRot.x = 0;
@@ -50,29 +59,30 @@ public class Ignition : MonoBehaviour
             lastRot.z = zAngle;
         }
         
-        setRotClamp();
+        // setRotClamp();
 
         transform.localEulerAngles = lastRot;
     }
 
     private void checkRotated()
     {
-        float difference = Mathf.Abs(90 - lastRot.z);
+        float angle = Quaternion.Angle(hand.localRotation, heldRot);
+        float difference = Mathf.Abs(90 - angle);
         if(difference < minDistance)
         {
-            uiScript.continueGame();
+            uiScript.overLayLoad();
         }
     }
 
-    private void setRotClamp()
-    {
-        if(lastRot.z > 180)
-        {
-            lastRot.z = 0;
-        }
-        else if(lastRot.z > 90)
-        {
-            lastRot.z = 90;
-        }
-    }
+    // private void setRotClamp()
+    // {
+    //     if(lastRot.z > 180)
+    //     {
+    //         lastRot.z = 0;
+    //     }
+    //     else if(lastRot.z > 90)
+    //     {
+    //         lastRot.z = 90;
+    //     }
+    // }
 }

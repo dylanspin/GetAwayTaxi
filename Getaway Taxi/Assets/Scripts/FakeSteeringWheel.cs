@@ -55,24 +55,8 @@ public class FakeSteeringWheel : MonoBehaviour
         checkGrip();
     }
     
-    private void setFollowHands()
-    {
-        HandPostions[0].localPosition = realController[0].transform.localPosition;
-        HandPostions[1].localPosition = realController[1].transform.localPosition;
-    }
-    
     private void checkGrip()
     {
-        // if(Input.GetKeyDown(KeyCode.L))
-        // {
-        //     letgo(0);
-        // }
-
-        // if(Input.GetKeyDown(KeyCode.K))
-        // {
-        //     letgo(1);
-        // }
-
         for(int i=0; i<posHeld.Length; i++)
         {
             if(posHeld[i])//if hand is holding
@@ -92,11 +76,6 @@ public class FakeSteeringWheel : MonoBehaviour
             }
         }
     }
-
-    private void setHandPositions(int handId)
-    {
-        HandVisual[handId].transform.position = new Vector3(visualGrabPositions[handId].position.x,visualGrabPositions[handId].position.y,visualGrabPositions[handId].position.z);
-    }
     
     private void letgo(int handId)//lets go the hand of the given id
     {
@@ -109,13 +88,14 @@ public class FakeSteeringWheel : MonoBehaviour
         if(Application.isEditor)//if in unity so playing on pc
         {
             float inputHorizontal = Input.GetAxis("Horizontal");//gets horizontal turn rate later needs to be gotten from steering wheel
-            steerAngle += (inputHorizontal * steeringSpeed) * Time.deltaTime;
+            steerAngle += (inputHorizontal * steeringSpeed * 2) * Time.deltaTime;
             steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
 
             if(inputHorizontal == 0 && !Input.GetKey(KeyCode.LeftShift))//left shift is to mimic when holding the steering wheel still
             {
                 steerAngle = returnZero(steerAngle,returnSteerSpeed);//returns steering wheel to 0
             }
+
             setSteering();//moves steering wheel
         }
         else//VR
@@ -153,12 +133,13 @@ public class FakeSteeringWheel : MonoBehaviour
                 returnVr();
                 calculateSteer();
             }
+
             setChild(transform.localEulerAngles.y > 200 ? 0 : 1);//sets steering wheel child object right rotation
         }
         setVrSteering();
     }
 
-    private void oneHanded(int handId)
+    private void oneHanded(int handId)//if steering wheel is held by one hand
     {
         Vector3 handPos = HandPostions[handId].transform.position;
         handPos.x = transform.position.x;
@@ -174,7 +155,7 @@ public class FakeSteeringWheel : MonoBehaviour
         clampRotation(rot);
     }
 
-    private void returnVr()
+    private void returnVr()//returns steering wheel back to 0 rotation
     {
         Vector3 targetDirection = returnPos - transform.position; 
 
@@ -186,7 +167,7 @@ public class FakeSteeringWheel : MonoBehaviour
         clampRotation(rot);
     }
     
-    private void clampRotation(Quaternion rot)
+    private void clampRotation(Quaternion rot)//clamps the max rotation of the steering wheel
     {
         Vector3 oldRot = transform.localEulerAngles;
   
@@ -218,10 +199,10 @@ public class FakeSteeringWheel : MonoBehaviour
             transform.localEulerAngles = newRot;
         }
 
-        calculateSteer();
+        calculateSteer();//calculates steering angle
     }
 
-    private void calculateSteer()
+    private void calculateSteer()//calculates steering angle to turn the car
     {
         float newHeight = (transform.position.y - grabPoints[0].position.y) - (transform.position.y - grabPoints[1].position.y) * 100;
         float rotationProcentage = ((newHeight - -3.8f) * 100) / (3.8f - -3.8f);
@@ -233,13 +214,33 @@ public class FakeSteeringWheel : MonoBehaviour
         }
     }
 
-    private void setSteering()//for pc steering
+    private void setSteering()//for pc steering controls
     {
         Vector3 currentAngle = transform.localEulerAngles;
         transform.localEulerAngles = new Vector3(-steerAngle,-90,0);
     }
 
-    private void setVrSteering()
+    private void setFollowHands()//set fake position tracking transforms
+    {
+        Vector3 pos1 = realController[0].transform.localPosition;
+        Vector3 pos2 = realController[1].transform.localPosition;
+
+        pos1.z = 0.45f;
+        pos2.z = 0.45f;
+
+        HandPostions[0].localPosition = pos1;
+        HandPostions[1].localPosition = pos2;
+
+        // HandPostions[0].localPosition = realController[0].transform.localPosition;
+        // HandPostions[1].localPosition = realController[1].transform.localPosition;
+    }
+
+    private void setHandPositions(int handId)
+    {
+        HandVisual[handId].transform.position = new Vector3(visualGrabPositions[handId].position.x,visualGrabPositions[handId].position.y,visualGrabPositions[handId].position.z);
+    }
+
+    private void setVrSteering()//sets visual steering wheel rotation
     {
         visualSteeringWheel.localEulerAngles = transform.localEulerAngles;
     }
