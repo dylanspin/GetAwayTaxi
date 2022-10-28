@@ -23,6 +23,8 @@ public class Car : MonoBehaviour
 
     [Tooltip("Engine stopping speed")]
     [SerializeField] private float decerateSpeed = 25;
+    [SerializeField] private OVRInput.Button gasInputs;
+    [SerializeField] private OVRInput.Button reverseInputs;
 
     [Header("Steering Wheel settings")]
 
@@ -148,7 +150,7 @@ public class Car : MonoBehaviour
         }
         else
         {
-            gass = (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) + -OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger));
+            gass = (OVRInput.Get(gasInputs)? 1:0 + - (OVRInput.Get(reverseInputs)? 1:0));
         }
 
         carUIScript.setGear(gass);

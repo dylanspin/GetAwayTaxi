@@ -48,6 +48,20 @@ public class FakeSteeringWheel : MonoBehaviour
         returnPos.x = transform.position.x;
     }
 
+    public void startCar(bool active)
+    {
+        if(!active)
+        {
+            letgo(0);
+            letgo(1);
+        }
+        else
+        {
+            posHeld[0] = active;
+            posHeld[1] = active;
+        }
+    }
+
     private void Update()
     {
         setFollowHands();
@@ -69,10 +83,10 @@ public class FakeSteeringWheel : MonoBehaviour
             }
             else
             {
-                if(OVRInput.Get(grabInputs[i]))//trigger pressed
-                {
-                    posHeld[i] = true;//sets is holding
-                }
+                // if(OVRInput.Get(grabInputs[i]))//trigger pressed
+                // {
+                //     posHeld[i] = true;//sets is holding
+                // }
             }
         }
     }

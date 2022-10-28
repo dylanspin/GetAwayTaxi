@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {   
+    [Header("End Settings")]
+    [SerializeField] private Vector2 endEffect = new Vector2(0.1f,5.0f);
+
     [Header("SteeringWheelObjects")]
     [SerializeField] private Transform steeringWheel;
     [SerializeField] private Transform[] handPos = new Transform[2];
@@ -11,17 +14,16 @@ public class CarController : MonoBehaviour
     [SerializeField] private Transform[] handVis = new Transform[2];
 
     [Header("Objects")]
-
-    [SerializeField] private GameObject pcPlayer;
-    [SerializeField] private GameObject vrPlayer;
+    [SerializeField] private GameObject pcPlayer;//normal pc look player
+    [SerializeField] private GameObject vrPlayer;//vr player body
 
     [Header("Scripts")]
-    [SerializeField] private GameController controllerScript;
-    [SerializeField] private Car movementScript;
-    [SerializeField] private CarCollider colliderScript;
-    [SerializeField] private CarUI uiScript;
-    [SerializeField] private CarStats statScript;
-    [SerializeField] private SpecialPowers specialScript;
+    [SerializeField] private GameController controllerScript;//main scene/game controller script
+    [SerializeField] private Car movementScript;//movement of the car script
+    [SerializeField] private CarCollider colliderScript;//controls what happens when car collides
+    [SerializeField] private CarUI uiScript;//manages the ui of the car
+    [SerializeField] private CarStats statScript;//keeps track of the stats of the car
+    [SerializeField] private SpecialPowers specialScript;//emp power concept script - not used
 
     [Header("Private Data")]
     private bool started = false;
@@ -55,7 +57,7 @@ public class CarController : MonoBehaviour
         specialScript.setStart(controllerScript,controllerScript.getTimeScript(),uiScript);
         movementScript.setStart(uiScript,controllerScript.getAiManager(),controllerScript.getSteering());
         statScript.setStart(movementScript);
-        colliderScript.setStartData(movementScript,statScript);
+        colliderScript.setStartData(movementScript,statScript,this);
         uiScript.setStart(statScript);
     }
 
@@ -65,6 +67,17 @@ public class CarController : MonoBehaviour
         movementScript.startCar(active);
         uiScript.activateCar(active);
         specialScript.setStarted(active);
+        controllerScript.startCar(active);
         //needs to trigger animation that makes the car shake 
+    }
+
+    public void disableCops(float timeDisable)
+    {
+
+    }
+
+    public void lost()
+    {
+        StartCoroutine(controllerScript.getTimeScript().slowlySlowmo(endEffect.y,endEffect.x,5));
     }
 }

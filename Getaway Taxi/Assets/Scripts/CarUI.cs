@@ -11,6 +11,7 @@ public class CarUI : MonoBehaviour
 
     [Tooltip("Reverse camera")]
     [SerializeField] private GameObject[] reverseCamera;
+    [SerializeField] private GameObject[] screenUi;
     // [SerializeField] private GameObject reverseCamera;
     [SerializeField] private float turnOffTime = 1.5f;
 
@@ -59,9 +60,17 @@ public class CarUI : MonoBehaviour
     public void activateCar(bool active)
     {
         carActive = active;
+        setScreenActive(active);
+        startUi.gameObject.SetActive(!active);
+    }
+
+    public void setScreenActive(bool active)
+    {
         reverseCamera[1].SetActive(active);
         reverseCamera[2].SetActive(!active);
-        startUi.gameObject.SetActive(!active);
+        
+        screenUi[0].SetActive(!active);
+        screenUi[0].SetActive(active);
     }
 
 

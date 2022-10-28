@@ -32,6 +32,11 @@ public class GameController : MonoBehaviour
 
     }
 
+    public void startCar(bool active)
+    {
+        steerinScript.startCar(active);
+    }
+
     public void reachedEnd()
     {
         reached = true;
@@ -43,7 +48,6 @@ public class GameController : MonoBehaviour
         Debug.Log("Pauzed : " + active);
         Values.pauzed = active;
     }
-
 
     /////get data
 

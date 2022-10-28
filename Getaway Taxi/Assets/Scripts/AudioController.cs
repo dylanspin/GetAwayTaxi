@@ -21,6 +21,17 @@ public class AudioController : MonoBehaviour
         }
     }
 
+    public void playMusic(bool active)
+    {
+        if(active)
+        {
+            backgroundMusic.Play();
+        }
+        else
+        {
+            backgroundMusic.Stop();
+        }
+    }
     public void setMusic()
     {
         if(musicVolume > mainVolume)
@@ -31,5 +42,10 @@ public class AudioController : MonoBehaviour
         {
             backgroundMusic.volume = musicVolume;
         }
+    }
+
+    public int getMainVol()
+    {
+        return mainVolume;
     }
 }
