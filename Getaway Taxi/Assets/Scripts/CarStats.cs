@@ -52,8 +52,4 @@ public class CarStats : MonoBehaviour
         return carScript.getSpeed();
     }
 
-    public float getProcentage()
-    {
-        return carScript.getSpeed();
-    }
 }

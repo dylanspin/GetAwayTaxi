@@ -39,9 +39,11 @@ public class OptionController : MonoBehaviour
 
     public void loadValues()
     {
-        options[0].setData(musicVolume);
-        options[1].setData(mainVolume);
-
+        if(options.Length > 0)
+        {
+            options[0].setData(musicVolume);
+            options[1].setData(mainVolume);
+        }
 
         audioScript.setOptions(true,musicVolume,mainVolume);//sets audio options in the main menu
     }

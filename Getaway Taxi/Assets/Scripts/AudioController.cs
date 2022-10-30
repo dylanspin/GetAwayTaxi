@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioController : MonoBehaviour
 {
     [SerializeField] private AudioSource backgroundMusic;
+    [SerializeField] private AudioSource buttonEffect;
 
     private int musicVolume;
     private int mainVolume;
@@ -13,7 +14,7 @@ public class AudioController : MonoBehaviour
     {
         musicVolume = musicSound;
         mainVolume = mainSound;
-        setMusic();
+        setSound();
 
         if(start)
         {
@@ -32,16 +33,24 @@ public class AudioController : MonoBehaviour
             backgroundMusic.Stop();
         }
     }
-    public void setMusic()
+    public void setSound()
     {
+        float mainVolumeCal = (float)mainVolume/100;
+        buttonEffect.volume = mainVolumeCal;
+
         if(musicVolume > mainVolume)
         {
-            backgroundMusic.volume = mainVolume;
+            backgroundMusic.volume = mainVolumeCal;
         }
         else
         {
-            backgroundMusic.volume = musicVolume;
+            backgroundMusic.volume = (float)musicVolume/100;
         }
+    }
+
+    public void playButtonEffect()
+    {
+        buttonEffect.Play();
     }
 
     public int getMainVol()

@@ -5,5 +5,8 @@ using UnityEngine;
 public static class Values
 {
     public static bool pauzed = false;
-    public static int heightLayer = 0;
+
+    //end screen
+    public static bool busted = false;
+    public static int score = 0;
 }

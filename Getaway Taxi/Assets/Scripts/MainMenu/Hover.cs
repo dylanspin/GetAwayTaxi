@@ -17,5 +17,12 @@ public class Hover : MonoBehaviour
     public void setState(bool active)
     {
         anim.SetBool(boolName,active);
+        if(active)
+        {
+            if(this.transform.root.GetComponent<AudioController>())
+            {
+                this.transform.root.GetComponent<AudioController>().playButtonEffect();
+            }
+        }
     }
 }

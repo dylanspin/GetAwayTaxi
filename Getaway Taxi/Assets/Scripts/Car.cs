@@ -81,64 +81,10 @@ public class Car : MonoBehaviour
             {
                 accelerate();//acelerating forward or backwards function
                 steering();//steering left and right
-                CheckChangeHeight();
+                // CheckChangeHeight();
             }
-            goToHeight();
+            // goToHeight();
         }
-    }
-
-    private void CheckChangeHeight()
-    {
-        if(Mathf.Abs(defaultHeight+hoverHeights[currentHeight]-transform.position.y) < 0.3f)
-        {
-            if(Input.GetMouseButton(0))
-            {
-                if(currentHeight < hoverHeights.Length-1)
-                {
-                    changeHeight(currentHeight + 1);
-                }
-            }
-            else if(Input.GetMouseButton(1))
-            {
-                if(currentHeight > 0)
-                {
-                    changeHeight(currentHeight - 1);
-                }
-            }
-        }
-    }
-
-    private void changeHeight(int newHeight)
-    {
-        Values.heightLayer = newHeight;//for new spawned cars
-        lastHeight = currentHeight;
-        aiScript.setHeight(currentHeight);
-        if(newHeight > currentHeight)
-        {
-            dir = 1;
-        }
-        else
-        {
-            dir = -1;
-        }
-        currentHeight = newHeight;
-    }
-
-    private void goToHeight()
-    {
-        transform.Translate(Vector3.up * dir * heighChangeSpeed * Time.deltaTime);
-        Vector3 originalPos = transform.position;
-        float setHeight;
-        if(dir > 0)
-        {
-            setHeight = Mathf.Clamp(originalPos.y, defaultHeight+hoverHeights[lastHeight], defaultHeight+hoverHeights[currentHeight]);    
-        }
-        else
-        {
-            setHeight = Mathf.Clamp(originalPos.y, defaultHeight+hoverHeights[currentHeight], defaultHeight+hoverHeights[lastHeight]);
-        }
-        originalPos.y = setHeight;
-        transform.position = originalPos;
     }
 
     private void accelerate()
@@ -217,15 +163,71 @@ public class Car : MonoBehaviour
     public void startCar(bool active)
     {
         started = active;
-        if(active)
-        {
-            changeHeight(1);
-        }
-        else
-        {
-            changeHeight(0);
-        }
+        // if(active)
+        // {
+        //     changeHeight(1);
+        // }
+        // else
+        // {
+        //     changeHeight(0);
+        // }
     }
+
+    ///not used anymore
+
+    // private void CheckChangeHeight()
+    // {
+    //     if(Mathf.Abs(defaultHeight+hoverHeights[currentHeight]-transform.position.y) < 0.3f)
+    //     {
+    //         if(Input.GetMouseButton(0))
+    //         {
+    //             if(currentHeight < hoverHeights.Length-1)
+    //             {
+    //                 changeHeight(currentHeight + 1);
+    //             }
+    //         }
+    //         else if(Input.GetMouseButton(1))
+    //         {
+    //             if(currentHeight > 0)
+    //             {
+    //                 changeHeight(currentHeight - 1);
+    //             }
+    //         }
+    //     }
+    // }
+
+    // private void changeHeight(int newHeight)
+    // {
+    //     Values.heightLayer = newHeight;//for new spawned cars
+    //     lastHeight = currentHeight;
+    //     aiScript.setHeight(currentHeight);
+    //     if(newHeight > currentHeight)
+    //     {
+    //         dir = 1;
+    //     }
+    //     else
+    //     {
+    //         dir = -1;
+    //     }
+    //     currentHeight = newHeight;
+    // }
+
+    // private void goToHeight()
+    // {
+    //     transform.Translate(Vector3.up * dir * heighChangeSpeed * Time.deltaTime);
+    //     Vector3 originalPos = transform.position;
+    //     float setHeight;
+    //     if(dir > 0)
+    //     {
+    //         setHeight = Mathf.Clamp(originalPos.y, defaultHeight+hoverHeights[lastHeight], defaultHeight+hoverHeights[currentHeight]);    
+    //     }
+    //     else
+    //     {
+    //         setHeight = Mathf.Clamp(originalPos.y, defaultHeight+hoverHeights[currentHeight], defaultHeight+hoverHeights[lastHeight]);
+    //     }
+    //     originalPos.y = setHeight;
+    //     transform.position = originalPos;
+    // }
 
     ////////////////////// get values
 

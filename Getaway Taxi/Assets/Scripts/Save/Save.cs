@@ -9,12 +9,12 @@ public static class Save
     public static string saveSettingsLoc = "/getAwaySettings1.save";//where the settings get saved
 
     ///Game data
-    public static void saveGameData(DataController oData)
+    public static void saveGameData()
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + saveGameLoc;//persistant path depends on the platform but for windows its here : %userprofile%\AppData\LocalLow\
         FileStream stream =  new FileStream(path,FileMode.Create);
-        GameData data = new GameData(oData);
+        GameData data = new GameData();
         formatter.Serialize(stream,data);//converts the data to be encrypted
         stream.Close();
     }
@@ -33,7 +33,6 @@ public static class Save
             return null;          
         }
     }
-
 
     ///Setting data
     public static void saveSettingData(OptionController oData)

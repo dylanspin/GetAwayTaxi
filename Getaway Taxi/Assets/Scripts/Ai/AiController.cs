@@ -33,7 +33,6 @@ public class AiController : MonoBehaviour
         stateScript.setStart(this);
         spawncarBody();
         lookScript.enabled = newInformation.police;//disable for testing
-        setHeight(Values.heightLayer);
     }
 
     public void spawncarBody()//spawns the body of the car

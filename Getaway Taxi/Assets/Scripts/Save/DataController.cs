@@ -12,7 +12,7 @@ public class DataController : MonoBehaviour
     [SerializeField] MainUiController uiScript;
 
     [Header("Private Data")]
-    private int CurrentLevel = 0;
+    private int highScore = 0;
 
     void Start()
     {
@@ -24,7 +24,7 @@ public class DataController : MonoBehaviour
         GameData loadData = Save.loadGameData();
         if(loadData != null)//if data was found set to saved data
         {
-            CurrentLevel = loadData.getCurrentLevel();
+            highScore = loadData.getCurrentHigh();
             uiScript.setStart(true);
         }
         else//if there is no save found
@@ -37,8 +37,8 @@ public class DataController : MonoBehaviour
 
     //get fuctions
 
-    public int getLevel()
+    public int getCurrentHigh()
     {
-        return CurrentLevel;
+        return highScore;
     }
 }

@@ -29,8 +29,8 @@ public class CarUI : MonoBehaviour
     [Tooltip("Text object of the moved distance counter")]
     [SerializeField] TMPro.TextMeshProUGUI movedDistance;
 
-    [Tooltip("Text object of the acceleration")]
-    [SerializeField] TMPro.TextMeshProUGUI startUi;
+    [Tooltip("Start ui thats displayed on the screen in the car")]
+    [SerializeField] GameObject startUi;
 
     [Header("Private Scripts")]
     private CarStats statsScript;
@@ -61,7 +61,7 @@ public class CarUI : MonoBehaviour
     {
         carActive = active;
         setScreenActive(active);
-        startUi.gameObject.SetActive(!active);
+        startUi.SetActive(!active);
     }
 
     public void setScreenActive(bool active)
@@ -69,8 +69,9 @@ public class CarUI : MonoBehaviour
         reverseCamera[1].SetActive(active);
         reverseCamera[2].SetActive(!active);
         
-        screenUi[0].SetActive(!active);
-        screenUi[0].SetActive(active);
+        //steering wheel screens
+        // screenUi[0].SetActive(!active);
+        // screenUi[1].SetActive(active);
     }
 
 

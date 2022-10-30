@@ -7,6 +7,7 @@ public class MainUiController : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Animator mainAnim;
+    [SerializeField] TMPro.TextMeshProUGUI scoreText;
 
     [Header("Private data")]
     private bool found = false;
@@ -18,6 +19,17 @@ public class MainUiController : MonoBehaviour
         //or to show a intro
     }
 
+    private void loadData()
+    {
+        float highScore = 0;
+        GameData loadData = Save.loadGameData();
+        if(loadData != null)//if data was found set to saved data
+        {
+            highScore = loadData.getCurrentHigh();
+        }
+        scoreText.text = highScore.ToString();
+    }
+
     public void overLayLoad()
     {
         mainAnim.SetBool("LoadGame",true);
@@ -25,7 +37,7 @@ public class MainUiController : MonoBehaviour
 
     public void continueGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(1);//SceneManager.GetActiveScene().buildIndex + 1
     }
 
     public void settings()

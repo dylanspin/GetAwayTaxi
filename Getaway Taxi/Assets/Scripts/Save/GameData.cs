@@ -5,15 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class GameData 
 {
-    private int CurrentLevel = 0;
+    private int highScore = 0;
 
-    public GameData(DataController oData)
+    public GameData()
     { 
-        CurrentLevel = oData.getLevel();
+        highScore = Values.score;
     }
 
-    public int getCurrentLevel()
+    public int getCurrentHigh()
     {
-        return CurrentLevel;
+        return highScore;
     }
 }   
