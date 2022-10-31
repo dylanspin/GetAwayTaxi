@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8740fb93f9c30f0468d6f60e2040d538, type: 3}
-  m_Name: DefaultCar-1
+  m_Name: Car-1
   m_EditorClassIdentifier: 
   Name: AI-Car
   spawnObject: {fileID: 3401284294575219437, guid: d47af3e7dd61a8f4399f9f79c29cf0a4,
     type: 3}
-  patrolSpeed: {x: 6, y: 9}
-  chaseSpeed: {x: 10, y: 15}
+  patrolSpeed: {x: 3, y: 6}
+  chaseSpeed: {x: 8, y: 10}
   rarity: 3
   police: 0

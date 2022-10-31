@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 1125064681704213206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 59.812836, y: 17.64, z: 27.695227}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4284565414022795300}
@@ -458,7 +458,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4d100b612cc9d4bac8fee900296353ae, type: 3}
-  m_Color: {r: 1, g: 0.07593929, b: 0.0141509175, a: 1}
+  m_Color: {r: 0.99215686, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -586,6 +586,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: copcar2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b7d5d300ba13ab4cbf8bed04c466de8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b7d5d300ba13ab4cbf8bed04c466de8, type: 3}

@@ -92,7 +92,6 @@ public class AiManager : MonoBehaviour
         Invoke("spawnRandomSpot",timeBetweenSpawns);
     }
 
-
     //invokes
     private void spawnRandomSpot()
     {
@@ -195,17 +194,16 @@ public class AiManager : MonoBehaviour
         return newReturn;
     }
 
-
-    public void setHeight(int newHeight)
-    {
-        currentHeight = newHeight;
-        for(int i=0; i<spawnedCars.Count; i++)
-        {
-            if(spawnedCars[i] != null)
-            {
-                spawnedCars[i].GetComponent<AiController>().setHeight(newHeight);
-            }
-        }
-    }
+    // public void setHeight(int newHeight)
+    // {
+    //     currentHeight = newHeight;
+    //     for(int i=0; i<spawnedCars.Count; i++)
+    //     {
+    //         if(spawnedCars[i] != null)
+    //         {
+    //             spawnedCars[i].GetComponent<AiController>().setHeight(newHeight);
+    //         }
+    //     }
+    // }
     
 }

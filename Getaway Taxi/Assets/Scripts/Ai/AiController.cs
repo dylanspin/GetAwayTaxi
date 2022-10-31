@@ -39,6 +39,7 @@ public class AiController : MonoBehaviour
     {
         spawnedBody = Instantiate(aiInformation.spawnObject,bodyHolder.position,bodyHolder.rotation,bodyHolder);
         bodyScript = spawnedBody.GetComponent<CarBodyScript>();
+        bodyScript.setIcon(layer == 1);
         chaseState.setStart(managerScript,aiInformation,bodyScript);
     }
 
@@ -47,8 +48,8 @@ public class AiController : MonoBehaviour
 
     }
 
-    public void setHeight(int newHeight)
-    {
-        bodyScript.setIcon(layer == newHeight);
-    }
+    // public void setHeight(int newHeight)
+    // {
+    //     bodyScript.setIcon(layer == newHeight);
+    // }
 }
