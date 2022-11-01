@@ -14,9 +14,13 @@ public class MainUiController : MonoBehaviour
 
     public void setStart(bool foundData)
     {
+        Debug.Log(Time.timeScale);
+        Debug.Log(Time.fixedDeltaTime);
+
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.01388889f;
+
         found = foundData;
-        //for disabling new game and continue button etc when there is no save data 
-        //or to show a intro
     }
 
     private void loadData()
@@ -28,6 +32,18 @@ public class MainUiController : MonoBehaviour
             highScore = loadData.getCurrentHigh();
         }
         scoreText.text = highScore.ToString();
+    }
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            overLayLoad();
+        }
+
     }
 
     public void overLayLoad()

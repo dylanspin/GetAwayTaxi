@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
     [Header("End Settings")]
 
     [Tooltip("Time for the slow motion end effect")]
-    [SerializeField] private float slowMoTime = 2f;
+    [SerializeField] private float slowMoTime = 0.05f;
 
     [Tooltip("Min time speed of the end slowmotion")]
     [SerializeField] private float minSlowmo = 0.05f;
@@ -20,29 +20,20 @@ public class GameController : MonoBehaviour
     [SerializeField] private EndPoint endScript;
     [SerializeField] private FakeSteeringWheel steerinScript;
 
-    [Header("Private Data")]
-    private bool reached = false;
-
-    public void cought()
+    public void setStart(CarUI uiScript)
     {
-
+        timeScript.setStart(uiScript,this);
     }
 
-    public void resetLevel()
-    {
-
-    }
-
-    public void startCar(bool active,CarUI uiScript)
+    public void startCar(bool active)
     {
         uiHelper.SetActive(!active);
         steerinScript.startCar(active);
-        timeScript.setStart(uiScript,this);
     }
 
     public void reachedEnd()
     {
-        reached = true;
+        carScript.setEnd(false);
         StartCoroutine(timeScript.slowlySlowmo(slowMoTime,minSlowmo,1,1));
     }
 

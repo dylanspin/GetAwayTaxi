@@ -11,6 +11,7 @@ public class OptionController : MonoBehaviour
 
     [Tooltip("All individual options")]
     [SerializeField] private AudioController audioScript;
+    [SerializeField] private MainUiController uiScript;
 
     [Header("Setting Data")]
     private int musicVolume = 50;
@@ -28,9 +29,14 @@ public class OptionController : MonoBehaviour
         {
             musicVolume = loadData.getMusic();
             mainVolume = loadData.getVolume();
+            if(uiScript)
+            {
+                uiScript.setStart(true);
+            }
         }
         else//if there is no save found
         {
+            uiScript.setStart(false);
             Debug.Log("No save data found");
         }
 

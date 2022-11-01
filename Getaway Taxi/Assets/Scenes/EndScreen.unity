@@ -730,7 +730,7 @@ RectTransform:
   - {fileID: 90430792}
   - {fileID: 1366096496}
   m_Father: {fileID: 906588099}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -843,8 +843,8 @@ RectTransform:
   m_Children:
   - {fileID: 1209413592}
   - {fileID: 492729114}
-  - {fileID: 1120373389}
   - {fileID: 843416740}
+  - {fileID: 1120373389}
   m_Father: {fileID: 2011735776}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -970,7 +970,7 @@ PrefabInstance:
     - target: {fileID: 4338938456348404364, guid: ea3684d5f9d805e4ca4d8a638cd45ed8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4338938456348404364, guid: ea3684d5f9d805e4ca4d8a638cd45ed8,
         type: 3}
@@ -1954,6 +1954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   options: []
   audioScript: {fileID: 2011735778}
+  uiScript: {fileID: 0}
 --- !u!114 &2011735773
 MonoBehaviour:
   m_ObjectHideFlags: 0

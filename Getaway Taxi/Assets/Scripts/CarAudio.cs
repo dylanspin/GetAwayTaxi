@@ -5,8 +5,9 @@ using UnityEngine;
 public class CarAudio : MonoBehaviour
 {
 
-    [Header("Collision")]
+    [Header("Random")]
     [SerializeField] private AudioSource bumpSound;
+    [SerializeField] private AudioSource bustedSound;
 
     [Header("Engine")]
     [SerializeField] private AudioClip[] engineSoundClips;
@@ -38,13 +39,23 @@ public class CarAudio : MonoBehaviour
         {
             Debug.Log("No save data found");
         }
+
+        setAudioVolumes();
+    }
+
+    private void setAudioVolumes()
+    {
+        float calcMain = (float)mainVolume/100;
+        hornSound.volume = calcMain;
+        bumpSound.volume = calcMain;
+        engine.volume = calcMain;
     }
 
     private void Update()
     {
         if(canHorn)
         {
-            if(OVRInput.GetDown(OVRInput.RawButton.X))
+            if(OVRInput.GetDown(OVRInput.RawButton.X) || Input.GetKeyDown(KeyCode.L))
             {
                 playHorn();
             }
@@ -101,5 +112,13 @@ public class CarAudio : MonoBehaviour
     {
         bumpSound.transform.position = posHit;
         bumpSound.Play();
+    }
+
+    public void playEnd(bool busted)
+    {
+        if(busted)
+        {
+            bustedSound.Play();
+        }
     }
 }

@@ -28,6 +28,17 @@ public class EndScreen : MonoBehaviour
         checkEndState();
     }
 
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            nextScene(0);
+        }
+    }
+
     private void checkEndState()
     {
         if(Values.busted)

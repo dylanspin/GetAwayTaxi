@@ -45,7 +45,7 @@ public class AiController : MonoBehaviour
 
     public void crashed()
     {
-
+        bodyScript.setIcon(false);
     }
 
     // public void setHeight(int newHeight)

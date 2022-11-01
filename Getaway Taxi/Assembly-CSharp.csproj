@@ -39,7 +39,6 @@
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportAimHandlerParabolic.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Firebase\StartCrashlytics.cs" />
      <Compile Include="Assets\Scripts\MainMenu\OptionController.cs" />
-     <Compile Include="Assets\Scripts\Save\DataController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\PassthroughProjectionSurface.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\HandMeshUI.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\Tools\InteractableTool.cs" />
@@ -212,6 +211,8 @@
      <Compile Include="Assets\Scripts\Ai\AiManager.cs" />
      <Compile Include="Assets\Scripts\FlipCamera.cs" />
      <Compile Include="Assets\Scripts\CarAudio.cs" />
+     <Compile Include="Assets\Scripts\EndBustedAnim.cs" />
+     <Compile Include="Assets\Scripts\MainMenu\fixPointer.cs" />
      <None Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Shaders\XingLightShader.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Shaders\Hidden.shader" />

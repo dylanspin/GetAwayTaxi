@@ -99,7 +99,7 @@ public class Car : MonoBehaviour
             gass = (OVRInput.Get(gasInputs)? 1:0 + - (OVRInput.Get(reverseInputs)? 1:0));
         }
 
-        carUIScript.setGear(gass);
+        carUIScript.setCamera(gass);
         addGass(gass);
         carRb.AddForceAtPosition(trustPos.forward * acelleration * Time.deltaTime,trustPos.position,ForceMode.VelocityChange);//moves car forward
     }

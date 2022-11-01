@@ -2222,6 +2222,7 @@ MonoBehaviour:
   - {fileID: 2127270235}
   - {fileID: 1984301900}
   audioScript: {fileID: 1846812008}
+  uiScript: {fileID: 1846812001}
 --- !u!114 &1846812008
 MonoBehaviour:
   m_ObjectHideFlags: 0

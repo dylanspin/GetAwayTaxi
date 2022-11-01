@@ -62,6 +62,7 @@ public class CarCollider : MonoBehaviour
             {
                 loseHealth();
             }
+            
             audioScript.collide(other.contacts[0].point);
             carMovementScript.collision(statsScript.getSpeed());
         }

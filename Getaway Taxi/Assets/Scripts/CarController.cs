@@ -32,6 +32,8 @@ public class CarController : MonoBehaviour
 
     void Start()
     {
+        Values.score = 0;
+        Values.busted = false;
         setStartData();
         // setStartVr();
     }
@@ -51,6 +53,15 @@ public class CarController : MonoBehaviour
                 startCar(!started);
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            returnMain();
+        }
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            lost();
+        }
     }
 
     private void setStartData()
@@ -61,6 +72,7 @@ public class CarController : MonoBehaviour
         statScript.setStart(movementScript);
         colliderScript.setStartData(movementScript,statScript,this,audioScript);
         uiScript.setStart(statScript);
+        controllerScript.setStart(uiScript);
     }
 
     private void startCar(bool active)
@@ -69,7 +81,7 @@ public class CarController : MonoBehaviour
         movementScript.startCar(active);
         uiScript.activateCar(active);
         specialScript.setStarted(active);
-        controllerScript.startCar(active,uiScript);
+        controllerScript.startCar(active);
         audioScript.startCar(active);
         //needs to trigger animation that makes the car shake 
     }
@@ -86,7 +98,14 @@ public class CarController : MonoBehaviour
 
     public void lost()
     {
-        StartCoroutine(controllerScript.getTimeScript().slowlySlowmo(endEffect.y,endEffect.x,5,0));
+        setEnd(true);
+        StartCoroutine(controllerScript.getTimeScript().slowlySlowmo(endEffect.y,endEffect.x,1,0));
     }
 
+    public void setEnd(bool caught)
+    {
+        audioScript.playEnd(caught);
+        Values.busted = caught;
+        Values.score = (int)statScript.getScore();
+    }
 }

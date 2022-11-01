@@ -25,17 +25,17 @@ public class CarStats : MonoBehaviour
     
     private void Update()
     {
-        countDistance();
+        // countDistance();
         time += 1 * Time.deltaTime;
     }
 
-    private void countDistance()
-    {
-        Vector3 distanceVector = transform.position - oldPos;
-        float distanceThisFrame = distanceVector.magnitude;
-        distanceMoved += distanceThisFrame;
-        oldPos = transform.position;
-    }
+    // private void countDistance()
+    // {
+    //     Vector3 distanceVector = transform.position - oldPos;
+    //     float distanceThisFrame = distanceVector.magnitude;
+    //     distanceMoved += distanceThisFrame;
+    //     oldPos = transform.position;
+    // }
 
     ////////////// get data : 
 
@@ -54,7 +54,7 @@ public class CarStats : MonoBehaviour
         return carScript.getSpeed();
     }
 
-    public float getTime()
+    public float getScore()
     {
         return time;
     }

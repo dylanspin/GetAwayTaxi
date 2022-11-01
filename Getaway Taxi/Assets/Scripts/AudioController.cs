@@ -33,6 +33,7 @@ public class AudioController : MonoBehaviour
             backgroundMusic.Stop();
         }
     }
+    
     public void setSound()
     {
         float mainVolumeCal = (float)mainVolume/100;

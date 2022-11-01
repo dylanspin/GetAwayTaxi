@@ -14,22 +14,27 @@ public class CarUI : MonoBehaviour
     // [SerializeField] private GameObject reverseCamera;
     [SerializeField] private float turnOffTime = 1.5f;
 
+    [Header("End Screen Overlay")]
+    [SerializeField] private Animator endOverlay;
+    [SerializeField] private TMPro.TextMeshProUGUI endMessage;
+    [SerializeField] private string[] endText = {"Busted","Escaped!"};
+
     [Header("Ui objects")]
 
     [Tooltip("Indicator to show the energy of the car")]
-    [SerializeField] Slider energySlider;
+    [SerializeField] private Slider energySlider;
 
     [Tooltip("Text object of the speed counter")]
-    [SerializeField] TMPro.TextMeshProUGUI speedCounter;
+    [SerializeField] private TMPro.TextMeshProUGUI speedCounter;
 
     [Tooltip("Text object of the acceleration")]
-    [SerializeField] TMPro.TextMeshProUGUI accelearation;
+    [SerializeField] private TMPro.TextMeshProUGUI accelearation;
 
     [Tooltip("Text object of the moved distance counter")]
-    [SerializeField] TMPro.TextMeshProUGUI movedDistance;
+    [SerializeField] private TMPro.TextMeshProUGUI movedDistance;
 
     [Tooltip("Start ui thats displayed on the screen in the car")]
-    [SerializeField] GameObject startUi;
+    [SerializeField] private GameObject startUi;
 
     [Header("Private Scripts")]
     private CarStats statsScript;
@@ -41,7 +46,6 @@ public class CarUI : MonoBehaviour
 
     public void setStart(CarStats newStats)
     {
-        Screen.lockCursor = true; 
         statsScript = newStats;
     }
 
@@ -59,8 +63,8 @@ public class CarUI : MonoBehaviour
     public void activateCar(bool active)
     {
         carActive = active;
-        setScreenActive(active);
-        startUi.SetActive(!active);
+        setScreenActive(active);//sets the minimap and reverse camera active
+        startUi.SetActive(!active);//ui for going back to main menu
     }
 
     public void setScreenActive(bool active)
@@ -69,26 +73,26 @@ public class CarUI : MonoBehaviour
         reverseCamera[2].SetActive(!active);
     }
 
-    public void setGear(float gear)
+    public void setCamera(float gear)
     {
         gearArrayID = Mathf.RoundToInt(gear)+1;
 
         if(gear != -1)
         {
-            if(reverseCamera[0].activeSelf && !IsInvoking("turnOfMirror"))
+            if(reverseCamera[0].activeSelf && !IsInvoking("turnOffReverse"))
             {
-                Invoke("turnOfMirror",turnOffTime);
+                Invoke("turnOffReverse",turnOffTime);
             }
         }
         else
         {
-            CancelInvoke("turnOfMirror");
+            CancelInvoke("turnOffReverse");
             reverseCamera[0].SetActive(true);
             reverseCamera[1].SetActive(false);
         }
     }
 
-    public void turnOfMirror()
+    public void turnOffReverse()
     {
         reverseCamera[0].SetActive(false);
         reverseCamera[1].SetActive(true);
@@ -96,25 +100,16 @@ public class CarUI : MonoBehaviour
 
     private void setUI()
     {
-        movedDistance.text = "M: " + statsScript.getMovedDistance().ToString("F0");
+        // movedDistance.text = "M: " + statsScript.getMovedDistance().ToString("F0");
+        movedDistance.text = statsScript.getScore().ToString("f2");
         speedCounter.text = directions[gearArrayID] + statsScript.getSpeed().ToString("F1");
         accelearation.text = statsScript.getAccel().ToString("F1");
     }
 
     public void setEndUITime(int showId)//checks at the end of slowmotion effect if there should be UI shown
     {
-        switch(showId) 
-        {
-            case 0:
-                
-                break;
-            case 1:
-
-                break;
-            default:
-
-                break;
-        }
+        endMessage.text = endText[showId];
+        endOverlay.SetBool("End",true);
     }
 
     public void setMaxSlider(float maxAmount,float currentAmount)//gets called from the special script sets the starting data for the slider
