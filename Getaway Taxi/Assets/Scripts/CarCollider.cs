@@ -27,16 +27,18 @@ public class CarCollider : MonoBehaviour
     [Header("Private scripts")]
     private CarStats statsScript;
     private Car carMovementScript;
+    private CarAudio audioScript;
     private CarController controller;
 
     [Header("Private Data")]
     private int health = 3;
     private bool collidDelay = true;
 
-    public void setStartData(Car newMovement,CarStats newStats,CarController controllerScript)
+    public void setStartData(Car newMovement,CarStats newStats,CarController controllerScript,CarAudio newAudio)
     {
         carMovementScript = newMovement;
         statsScript = newStats;
+        audioScript = newAudio;
         controller = controllerScript;
         health = lightAnimator.Length;
     }
@@ -60,7 +62,7 @@ public class CarCollider : MonoBehaviour
             {
                 loseHealth();
             }
-
+            audioScript.collide(other.contacts[0].point);
             carMovementScript.collision(statsScript.getSpeed());
         }
     }

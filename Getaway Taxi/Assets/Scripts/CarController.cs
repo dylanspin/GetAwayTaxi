@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CarController : MonoBehaviour
 {   
@@ -24,6 +25,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private CarUI uiScript;//manages the ui of the car
     [SerializeField] private CarStats statScript;//keeps track of the stats of the car
     [SerializeField] private SpecialPowers specialScript;//emp power concept script - not used
+    [SerializeField] private CarAudio audioScript;//emp power concept script - not used
 
     [Header("Private Data")]
     private bool started = false;
@@ -57,7 +59,7 @@ public class CarController : MonoBehaviour
         specialScript.setStart(controllerScript,controllerScript.getTimeScript(),uiScript);
         movementScript.setStart(uiScript,controllerScript.getAiManager(),controllerScript.getSteering());
         statScript.setStart(movementScript);
-        colliderScript.setStartData(movementScript,statScript,this);
+        colliderScript.setStartData(movementScript,statScript,this,audioScript);
         uiScript.setStart(statScript);
     }
 
@@ -67,8 +69,14 @@ public class CarController : MonoBehaviour
         movementScript.startCar(active);
         uiScript.activateCar(active);
         specialScript.setStarted(active);
-        controllerScript.startCar(active);
+        controllerScript.startCar(active,uiScript);
+        audioScript.startCar(active);
         //needs to trigger animation that makes the car shake 
+    }
+
+    public void returnMain()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void disableCops(float timeDisable)
@@ -78,6 +86,7 @@ public class CarController : MonoBehaviour
 
     public void lost()
     {
-        StartCoroutine(controllerScript.getTimeScript().slowlySlowmo(endEffect.y,endEffect.x,5));
+        StartCoroutine(controllerScript.getTimeScript().slowlySlowmo(endEffect.y,endEffect.x,5,0));
     }
+
 }

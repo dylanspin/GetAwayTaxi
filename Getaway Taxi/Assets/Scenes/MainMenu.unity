@@ -269,7 +269,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8622191246133600755}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3366,7 +3366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpAnim: {fileID: 8622191246694187385}
   video: {fileID: 146893362}
-  audioController: {fileID: 0}
+  audioController: {fileID: 1846812008}
 --- !u!1001 &7815665797019038209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3611,8 +3611,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8622191245991716711}
-  - {fileID: 436321350}
   - {fileID: 146893361}
+  - {fileID: 436321350}
   m_Father: {fileID: 8622191246694187390}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3849,7 +3849,7 @@ PrefabInstance:
     - target: {fileID: 693767060035015446, guid: 72dde7362f9d1984f90fb5d683d29746,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 693767060035015446, guid: 72dde7362f9d1984f90fb5d683d29746,
         type: 3}

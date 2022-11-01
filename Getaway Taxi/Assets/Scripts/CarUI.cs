@@ -11,7 +11,6 @@ public class CarUI : MonoBehaviour
 
     [Tooltip("Reverse camera")]
     [SerializeField] private GameObject[] reverseCamera;
-    [SerializeField] private GameObject[] screenUi;
     // [SerializeField] private GameObject reverseCamera;
     [SerializeField] private float turnOffTime = 1.5f;
 
@@ -68,12 +67,7 @@ public class CarUI : MonoBehaviour
     {
         reverseCamera[1].SetActive(active);
         reverseCamera[2].SetActive(!active);
-        
-        //steering wheel screens
-        // screenUi[0].SetActive(!active);
-        // screenUi[1].SetActive(active);
     }
-
 
     public void setGear(float gear)
     {
@@ -105,6 +99,22 @@ public class CarUI : MonoBehaviour
         movedDistance.text = "M: " + statsScript.getMovedDistance().ToString("F0");
         speedCounter.text = directions[gearArrayID] + statsScript.getSpeed().ToString("F1");
         accelearation.text = statsScript.getAccel().ToString("F1");
+    }
+
+    public void setEndUITime(int showId)//checks at the end of slowmotion effect if there should be UI shown
+    {
+        switch(showId) 
+        {
+            case 0:
+                
+                break;
+            case 1:
+
+                break;
+            default:
+
+                break;
+        }
     }
 
     public void setMaxSlider(float maxAmount,float currentAmount)//gets called from the special script sets the starting data for the slider

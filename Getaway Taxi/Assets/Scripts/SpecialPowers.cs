@@ -100,7 +100,7 @@ public class SpecialPowers : MonoBehaviour
 
     private void activateTimeEffect()
     {
-        StartCoroutine(timeScript.slowlySlowmo(empTimeEffect.y,empTimeEffect.x,5));
+        StartCoroutine(timeScript.slowlySlowmo(empTimeEffect.y,empTimeEffect.x,5,-1));
     }
 
     private void returnToNormal()

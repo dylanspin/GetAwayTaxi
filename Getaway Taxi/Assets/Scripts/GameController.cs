@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private float minSlowmo = 0.05f;
 
     [Header("Scripts")]
+    [SerializeField] private GameObject uiHelper;
     [SerializeField] private AiManager aiMangerScript;
     [SerializeField] private CarController carScript;
     [SerializeField] private TimeManager timeScript;
@@ -32,15 +33,17 @@ public class GameController : MonoBehaviour
 
     }
 
-    public void startCar(bool active)
+    public void startCar(bool active,CarUI uiScript)
     {
+        uiHelper.SetActive(!active);
         steerinScript.startCar(active);
+        timeScript.setStart(uiScript,this);
     }
 
     public void reachedEnd()
     {
         reached = true;
-        StartCoroutine(timeScript.slowlySlowmo(slowMoTime,minSlowmo,1));
+        StartCoroutine(timeScript.slowlySlowmo(slowMoTime,minSlowmo,1,1));
     }
 
     public void pauzedGame(bool active)

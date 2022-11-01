@@ -52,17 +52,28 @@ public class OptionController : MonoBehaviour
     {
         switch(option) 
         {
-        case 0: //music setting
-            musicVolume = newValue;
-            break;
-        case 1://
-            mainVolume = newValue;
-            break;
-        default://do nothing
-            break;
+            case 0: //music setting
+                musicVolume = newValue;
+                break;
+            case 1://
+                mainVolume = newValue;
+                break;
+            default://do nothing
+                break;
         } 
 
         audioScript.setOptions(false,musicVolume,mainVolume);//sets audio options in the main menu
         Save.saveSettingData(this);
+    }
+
+
+    public int getMusic()
+    {
+        return musicVolume;
+    }
+
+    public int getMainSound()
+    {
+        return mainVolume;
     }
 }

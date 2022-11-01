@@ -11,7 +11,8 @@ public class SettingData
 
     public SettingData(OptionController oData)
     {
-
+        musicVolume = oData.getMusic();
+        mainVolume = oData.getMainSound();
     }
 
 

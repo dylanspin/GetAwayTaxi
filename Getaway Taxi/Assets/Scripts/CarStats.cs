@@ -16,6 +16,7 @@ public class CarStats : MonoBehaviour
 
     [Header("Private Stats")]
     private float distanceMoved = 0.0f;
+    private float time = 0;
 
     public void setStart(Car newMovement)
     {
@@ -25,6 +26,7 @@ public class CarStats : MonoBehaviour
     private void Update()
     {
         countDistance();
+        time += 1 * Time.deltaTime;
     }
 
     private void countDistance()
@@ -50,6 +52,11 @@ public class CarStats : MonoBehaviour
     public float getSpeed()
     {
         return carScript.getSpeed();
+    }
+
+    public float getTime()
+    {
+        return time;
     }
 
 }

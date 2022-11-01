@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    /*
-        Slow motion effect for the end when end goal is reached
-
-        Or maybe for drifting?
-    */
-
-    [Header("Scripts")]
-
-    [Tooltip("The main controller of the game")]
-    [SerializeField] private GameController controllerScript;
-    
     [Header("Settings")]
 
     [Tooltip("The speed of the sped up time")]
@@ -31,8 +20,14 @@ public class TimeManager : MonoBehaviour
     private bool pauzed = false;
     private bool speedUp = false;
 
-    public void Start()
+    [Header("Scripts")]
+    private CarUI uiScript;
+    private GameController controllerScript;
+
+    public void setStart(CarUI newScript,GameController newController)
     {
+        uiScript = newScript;
+        controllerScript = newController;
         checkEndTime(0);//resets time to make sure its at normal speed
     }
 
@@ -108,7 +103,7 @@ public class TimeManager : MonoBehaviour
     }
 
     //SLowly changes the speed of time 
-    public IEnumerator slowlySlowmo (float duration, float minTimeSpeed,int resetTime)
+    public IEnumerator slowlySlowmo (float duration, float minTimeSpeed,int resetTime,int endUi)
     {
         float startTime = Time.timeScale;
         float elepsed = 0.0f;
@@ -125,13 +120,14 @@ public class TimeManager : MonoBehaviour
             yield return null;
         }
 
-        if(resetTime == 5)
+        if(resetTime == 5)//goes back to normal time speed after full slowmotion
         {
-            StartCoroutine(slowlySlowmo(duration/3,startTime,0));
+            StartCoroutine(slowlySlowmo(duration/3,startTime,0,-1));
         }
         else
         {
             checkEndTime(resetTime);
+            uiScript.setEndUITime(endUi);
         }
     }
 
