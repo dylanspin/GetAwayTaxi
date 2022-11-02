@@ -54,14 +54,14 @@ public class CarController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            returnMain();
-        }
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            lost();
-        }
+        // if(Input.GetKeyDown(KeyCode.P))
+        // {
+        //     returnMain();
+        // }
+        // if(Input.GetKeyDown(KeyCode.L))
+        // {
+        //     lost();
+        // }
     }
 
     private void setStartData()
@@ -93,7 +93,7 @@ public class CarController : MonoBehaviour
 
     public void disableCops(float timeDisable)
     {
-
+        
     }
 
     public void lost()

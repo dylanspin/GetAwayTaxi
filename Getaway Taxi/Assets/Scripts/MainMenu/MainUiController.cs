@@ -34,16 +34,12 @@ public class MainUiController : MonoBehaviour
         scoreText.text = highScore.ToString();
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            overLayLoad();
-        }
-
+        // if(Input.GetKeyDown(KeyCode.P))
+        // {
+        //     overLayLoad();
+        // }
     }
 
     public void overLayLoad()
