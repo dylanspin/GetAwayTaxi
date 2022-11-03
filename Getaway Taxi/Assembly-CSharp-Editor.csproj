@@ -819,9 +819,6 @@
     <Reference Include="Unity.Subsystem.Registration">
         <HintPath>D:\Users\dylan\GetAwayTaxi\Getaway Taxi\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-        <HintPath>D:\Users\dylan\GetAwayTaxi\Getaway Taxi\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
         <HintPath>D:\Users\dylan\GetAwayTaxi\Getaway Taxi\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
@@ -839,9 +836,6 @@
     </Reference>
     <Reference Include="Unity.Burst">
         <HintPath>D:\Users\dylan\GetAwayTaxi\Getaway Taxi\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-        <HintPath>D:\Users\dylan\GetAwayTaxi\Getaway Taxi\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
         <HintPath>D:\Users\dylan\GetAwayTaxi\Getaway Taxi\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
