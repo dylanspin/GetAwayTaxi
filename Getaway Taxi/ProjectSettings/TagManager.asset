@@ -8,6 +8,7 @@ TagManager:
   - CopAi
   - LeftHand
   - RightHand
+  - Police
   layers:
   - Default
   - TransparentFX

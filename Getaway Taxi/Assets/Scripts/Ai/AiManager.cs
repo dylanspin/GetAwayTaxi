@@ -148,6 +148,7 @@ public class AiManager : MonoBehaviour
             AiCarInformation currentAi = copAis[copRarities[Random.Range(0,copRarities.Count)]];
             
             Transform spawnedAi = Instantiate(spawnCarObj,spawnPos.position,spawnPos.rotation).transform;
+            spawnedAi.tag = "Police";//for checking collisions
             Transform startDes = copSpawns[spawnPoint].GetComponent<NextPoint>().nextPoint();
 
             AiController controllerScript = spawnedAi.GetComponent<AiController>();

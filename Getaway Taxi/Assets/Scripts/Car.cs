@@ -21,8 +21,15 @@ public class Car : MonoBehaviour
     [Tooltip("Engine Forward Speed")]
     [SerializeField] private float accelerateSpeed = 50;
 
-    [Tooltip("Engine stopping speed")]
-    [SerializeField] private float decerateSpeed = 25;
+    [Tooltip("Engine Reverse speed")]
+    [SerializeField] private float reverseSpeed = 25;
+
+    [Tooltip("When acceleration is above 0 the multiplier when breaking so the car stops faster")]
+    [SerializeField] private float breakMultiplier = 20;
+
+    [Tooltip("Engine losing speed")]
+    [SerializeField] private float loseSpeed = 25;
+
     [SerializeField] private OVRInput.Button gasInputs;
     [SerializeField] private OVRInput.Button reverseInputs;
 
@@ -89,32 +96,40 @@ public class Car : MonoBehaviour
 
     private void accelerate()
     {
+        bool inputForward = OVRInput.Get(gasInputs) || Input.GetKey(KeyCode.W);
+        bool inputReverse = OVRInput.Get(gasInputs) || Input.GetKey(KeyCode.S);
+
         float gass;
         if(Application.isEditor)
         {
-            gass = (Input.GetKey(KeyCode.W) ? 1 : 0) + (Input.GetKey(KeyCode.S) ? -1 : 0);
+            gass = (inputForward ? 1 : 0) + (inputReverse ? -1 : 0);
         }
         else
         {
-            gass = (OVRInput.Get(gasInputs)? 1:0 + - (OVRInput.Get(reverseInputs)? 1:0));
+            gass = (inputForward? 1:0 + - (inputReverse? 1:0));
         }
-
         carUIScript.setCamera(gass);
         addGass(gass);
+
         carRb.AddForceAtPosition(trustPos.forward * acelleration * Time.deltaTime,trustPos.position,ForceMode.VelocityChange);//moves car forward
     }
 
     private void addGass(float gass)
     {
-        if(gass == 0)
+        
+        if(gass == 0)//if no input
         {
-            acelleration = returnZero(acelleration,decerateSpeed);
+            acelleration = returnZero(acelleration,loseSpeed);
         }
-        else
+        else//if has input
         {
-            acelleration += gass * accelerateSpeed * Time.deltaTime; 
+            float multiplier = ((gass < 0 && acelleration > 0) ? breakMultiplier : 1);
+            float carSpeed = gass > 0 ? accelerateSpeed : reverseSpeed;
+
+            acelleration += gass * carSpeed * multiplier * Time.deltaTime; 
             acelleration = Mathf.Clamp(acelleration,-maxSpeed.y,maxSpeed.x);
-        }
+        }  
+      
     }
 
     private void steering()

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: AI-Car
   spawnObject: {fileID: 3401284294575219437, guid: d47af3e7dd61a8f4399f9f79c29cf0a4,
     type: 3}
-  patrolSpeed: {x: 3, y: 6}
+  patrolSpeed: {x: 2, y: 4}
   chaseSpeed: {x: 6, y: 8}
   rarity: 3
   police: 0

@@ -58,7 +58,7 @@ public class CarCollider : MonoBehaviour
                 }
             }
 
-            if(collidDelay)
+            if(collidDelay && rootObject.tag == "Police")//if the delat is not active and that the collision was with a police car
             {
                 loseHealth();
             }

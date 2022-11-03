@@ -141,7 +141,7 @@ MonoBehaviour:
     m_Bits: 512
   viewLayers:
     serializedVersion: 2
-    m_Bits: 1537
+    m_Bits: 1793
 --- !u!54 &1961178406289461256
 Rigidbody:
   m_ObjectHideFlags: 0

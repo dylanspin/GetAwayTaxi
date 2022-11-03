@@ -1694,9 +1694,10 @@ MonoBehaviour:
   - 3.85
   - 7.7
   heighChangeSpeed: 7.5
-  maxSpeed: {x: 120, y: 40}
+  maxSpeed: {x: 250, y: 40}
   accelerateSpeed: 30
-  decerateSpeed: 15
+  decerateSpeed: 25
+  loseSpeed: 15
   gasInputs: 2105344
   reverseInputs: 4210688
   turnSpeed: 110
