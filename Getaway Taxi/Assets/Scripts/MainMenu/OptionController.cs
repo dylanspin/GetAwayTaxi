@@ -36,7 +36,10 @@ public class OptionController : MonoBehaviour
         }
         else//if there is no save found
         {
-            uiScript.setStart(false);
+            if (uiScript)
+            {
+                uiScript.setStart(false);
+            }
             Debug.Log("No save data found");
         }
 
