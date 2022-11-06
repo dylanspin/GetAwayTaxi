@@ -75,7 +75,6 @@ public class AiLook : MonoBehaviour
                 else
                 {
                     setViewTime(false);
-                   // Debug.DrawRay(ray.origin, ray.direction * viewDistance, Color.green);
                 }
             }
         }

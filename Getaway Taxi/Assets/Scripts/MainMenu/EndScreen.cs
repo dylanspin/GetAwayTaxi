@@ -20,8 +20,8 @@ public class EndScreen : MonoBehaviour
     [SerializeField] Animator uiAnimator;
 
     [Header("Private data")]
-
     private int loadScene = 0;//scene id that gets loaded when animation overlay is done
+    private bool goingNext = false;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class EndScreen : MonoBehaviour
     {
         // if(Input.GetKeyDown(KeyCode.P))
         // {
-        //     nextScene(0);
+        //     nextScene(1);
         // }
     }
 
@@ -54,14 +54,17 @@ public class EndScreen : MonoBehaviour
 
             if(Values.score > highScore)//new highscore
             {
-                topText.text = endFeedbackText[2];
+                highScore = Values.score;
+                Save.saveGameData();
 
+                topText.text = endFeedbackText[2];
             }
             else
             {
                 topText.text = endFeedbackText[1];
             }
         }
+
         scoreText.text = Values.score.ToString();
     }
 
@@ -72,7 +75,11 @@ public class EndScreen : MonoBehaviour
 
     public void nextScene(int newScene)
     {
-        loadScene = newScene;
-        uiAnimator.SetBool("LoadGame",true);
+        if(!goingNext)//prevents bug
+        {
+            goingNext = true;
+            loadScene = newScene;
+            uiAnimator.SetBool("LoadGame",true);
+        }
     }
 }

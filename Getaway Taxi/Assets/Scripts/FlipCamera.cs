@@ -5,18 +5,20 @@ using UnityEngine;
 public class FlipCamera : MonoBehaviour
 {
     [SerializeField] private Camera camera;
-    public bool flipHorizontal;
+    [SerializeField] private bool flipHorizontal;
 
     private void Awake () 
     {
-        camera = GetComponent<Camera>();
+        OnPreCull();
+        OnPreRender();
+        OnPostRender();
     }
 
     private void OnPreCull() 
     {
         camera.ResetWorldToCameraMatrix();
         camera.ResetProjectionMatrix();
-        Vector3 scale = new Vector3(flipHorizontal ? -1 : 1, 1, 1);
+        Vector3 scale = new Vector3(flipHorizontal ? -1 : 1, -1, 1);
         camera.projectionMatrix = camera.projectionMatrix * Matrix4x4.Scale(scale);
     }
 

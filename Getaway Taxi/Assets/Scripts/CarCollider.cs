@@ -75,7 +75,7 @@ public class CarCollider : MonoBehaviour
 
     private void loseHealth()
     {
-        if(health > 0)
+        if(health > 1)
         {
             health --;
             controller.disableCops(copDisableTime);//disables cops for a couple of seconds

@@ -40,8 +40,9 @@ public class CarController : MonoBehaviour
 
     private void setStartVr()
     {
-        pcPlayer.SetActive(Application.isEditor);
-        vrPlayer.SetActive(!Application.isEditor);
+        // pcPlayer.SetActive(Application.isEditor);
+        // vrPlayer.SetActive(!Application.isEditor);
+        // OVRManager.display.RecenterPose();
     }
    
     void Update()
@@ -93,7 +94,7 @@ public class CarController : MonoBehaviour
 
     public void disableCops(float timeDisable)
     {
-        
+        controllerScript.getAiManager().disableCops(timeDisable);
     }
 
     public void lost()

@@ -195,6 +195,29 @@ public class AiManager : MonoBehaviour
         return newReturn;
     }
 
+    public void disableCops(float disableTime)
+    {
+        CancelInvoke("enableCops");
+        Invoke("enableCops",disableTime);
+
+        setAllCops(false);
+    }
+
+    private void enableCops()
+    {
+        setAllCops(true);
+    }
+
+    private void setAllCops(bool active)
+    {
+        for(int i=0; i<spawnedCops.Count; i++)
+        {
+            if(spawnedCops[i] != null)
+            {
+                spawnedCops[i].GetComponent<AiController>().setEnable(active);
+            }
+        }
+    }
     // public void setHeight(int newHeight)
     // {
     //     currentHeight = newHeight;

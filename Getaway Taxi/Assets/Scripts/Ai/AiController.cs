@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AiController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class AiController : MonoBehaviour
     [SerializeField] private StateManager stateScript;
     [SerializeField] private PatrolState patrolState;
     [SerializeField] private ChaseState chaseState;
+    [SerializeField] private NavMeshAgent agent;
 
     [Header("Set private data")]
     [SerializeField] private AiLook lookScript;
@@ -19,6 +21,7 @@ public class AiController : MonoBehaviour
 
     [Header("private data")]
     private int layer = 0;
+    private bool crashedBool = false;
     private GameObject spawnedBody;
     private AiCarInformation aiInformation;
     private AiManager managerScript;
@@ -46,6 +49,22 @@ public class AiController : MonoBehaviour
     public void crashed()
     {
         bodyScript.setIcon(false);
+        crashedBool = true;
+    }
+
+    public void setEnable(bool active)
+    {
+        if(!crashedBool)
+        {
+            if(active)
+            {
+                agent.Resume();
+            }
+            else
+            {
+                agent.Stop();
+            }
+        }
     }
 
     // public void setHeight(int newHeight)

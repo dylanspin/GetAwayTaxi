@@ -8,6 +8,7 @@ public class CarAudio : MonoBehaviour
     [Header("Random")]
     [SerializeField] private AudioSource bumpSound;
     [SerializeField] private AudioSource bustedSound;
+    [SerializeField] private AudioSource intro;
 
     [Header("Engine")]
     [SerializeField] private AudioClip[] engineSoundClips;
@@ -41,6 +42,7 @@ public class CarAudio : MonoBehaviour
         }
 
         setAudioVolumes();
+        playStartAudio();
     }
 
     private void setAudioVolumes()
@@ -49,6 +51,12 @@ public class CarAudio : MonoBehaviour
         hornSound.volume = calcMain;
         bumpSound.volume = calcMain;
         engine.volume = calcMain;
+        intro.volume = calcMain;
+    }
+
+    private void playStartAudio()
+    {
+        intro.Play();
     }
 
     private void Update()
@@ -104,6 +112,7 @@ public class CarAudio : MonoBehaviour
 
     public void playLoopedEngine()
     {
+        engine.loop = true;
         engine.clip = engineSoundClips[1];
         engine.Play();
     }

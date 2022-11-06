@@ -97,7 +97,7 @@ public class Car : MonoBehaviour
     private void accelerate()
     {
         bool inputForward = OVRInput.Get(gasInputs) || Input.GetKey(KeyCode.W);
-        bool inputReverse = OVRInput.Get(gasInputs) || Input.GetKey(KeyCode.S);
+        bool inputReverse = OVRInput.Get(reverseInputs) || Input.GetKey(KeyCode.S);
 
         float gass;
         if(Application.isEditor)
