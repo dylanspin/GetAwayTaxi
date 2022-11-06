@@ -10,6 +10,10 @@ public class CarAudio : MonoBehaviour
     [SerializeField] private AudioSource bustedSound;
     [SerializeField] private AudioSource intro;
 
+    [Header("Music")]
+    [SerializeField] private AudioClip[] musicTracks;
+    [SerializeField] private AudioSource musicSource;
+
     [Header("Engine")]
     [SerializeField] private AudioClip[] engineSoundClips;
     [SerializeField] private AudioSource engine;
@@ -48,15 +52,25 @@ public class CarAudio : MonoBehaviour
     private void setAudioVolumes()
     {
         float calcMain = (float)mainVolume/100;
+        float calcMusic = (float)musicVolume/100;
+
+        if(calcMusic > calcMain)//if music volume is louder then overall volume
+        {
+            calcMusic = calcMain;
+        }
+
         hornSound.volume = calcMain;
         bumpSound.volume = calcMain;
-        engine.volume = calcMain;
+        engine.volume = calcMain *= 0.75f;
         intro.volume = calcMain;
+
+        musicSource.volume = calcMusic *= 0.65f;
     }
 
     private void playStartAudio()
     {
         intro.Play();
+        Invoke("nextSong",intro.clip.length);
     }
 
     private void Update()
@@ -90,6 +104,33 @@ public class CarAudio : MonoBehaviour
         hornSound.clip = currentAudio;
         hornSound.Play();
         Invoke("unlockHorn",2);
+    }
+
+    private void nextSong()
+    {
+        playMusic();
+    }
+
+    private void playMusic()
+    {
+        AudioClip currentAudio = null;
+        if(musicSource.clip == null)
+        {
+            currentAudio = musicTracks[Random.Range(0,musicTracks.Length)];
+        }
+        else
+        {
+            AudioClip lastAudio = musicSource.clip;
+            while(currentAudio == null || currentAudio == lastAudio)
+            {
+                currentAudio = musicTracks[Random.Range(0,musicTracks.Length)];
+            }
+        }
+
+        musicSource.clip = currentAudio;
+        musicSource.Play();
+
+        Invoke("nextSong",currentAudio.length);
     }
 
     private void unlockHorn()
