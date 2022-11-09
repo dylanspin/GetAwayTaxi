@@ -5,18 +5,18 @@ using UnityEngine;
 public class EndPoint : MonoBehaviour
 {
     [Header("Scripts")]
-    [SerializeField] GameController controllerScript;
+    [SerializeField] GameController controllerScript;//the game controller that manages the whole game
 
     [Header("Private data")]
-    private bool ended = false;
+    private bool ended = false;//bool for if the game has ended
  
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)//if trigger is entered
     {
-        if(!ended)
+        if(!ended)//if the game hasent ended
         {
-            if(other.transform.root.tag == "Player")
+            if(other.transform.root.tag == "Player")//if object that enters the trigger is the player
             {
-                end(true);
+                end(true);//sets the ended game true
             }
         }
     }
@@ -24,6 +24,9 @@ public class EndPoint : MonoBehaviour
     public void end(bool active)
     {
         ended = active;
-        controllerScript.reachedEnd();
+        if(ended)
+        {
+            controllerScript.reachedEnd();//tell the controller has ended 
+        }
     }
 }

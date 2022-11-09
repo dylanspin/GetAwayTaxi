@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Shake : MonoBehaviour
 {
-
     /*
         Tried using this for the car shake when the car starts up
-    
+        Ended up to be to much for in VR
     */
 
     private Vector3 originalPos;

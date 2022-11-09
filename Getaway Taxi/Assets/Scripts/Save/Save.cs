@@ -5,8 +5,8 @@ using UnityEngine;
 public static class Save
 {
     [Header("Save Paths")]
-    public static string saveGameLoc = "/getAway1.save";//where the scrapBook settings get saved
-    public static string saveSettingsLoc = "/getAwaySettings1.save";//where the settings get saved
+    private static string saveGameLoc = "/getAway1.save";//where the scrapBook settings get saved
+    private static string saveSettingsLoc = "/getAwaySettings1.save";//where the settings get saved
 
     ///Game data
     public static void saveGameData()
@@ -29,7 +29,9 @@ public static class Save
             GameData data = formatter.Deserialize(stream) as GameData;//decrypts the saved data
             stream.Close();
             return data;//returns the data from the saved BookData class
-        }else{
+        }
+        else
+        {
             return null;          
         }
     }
@@ -55,7 +57,9 @@ public static class Save
             SettingData data = formatter.Deserialize(stream) as SettingData;//decrypts the saved data
             stream.Close();
             return data;//returns the data from the saved BookData class
-        }else{
+        }
+        else
+        {
             return null;          
         }
     }

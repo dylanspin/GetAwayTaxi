@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class CarBodyScript : MonoBehaviour
 {
-    [SerializeField] private GameObject iconObject;
-    [SerializeField] private Animator chaseAnim;
+    /*
+        the script on the AI car bodies
+    */
 
-    public void setChase(bool active)
+    [SerializeField] private GameObject iconObject;//the icon above the car for the minimap
+    [SerializeField] private Animator chaseAnim;//the police light animator
+
+    public void setChase(bool active)//turns on the police lights on the police car body if chasing the player
     {
         if(chaseAnim)
         {
@@ -15,7 +19,7 @@ public class CarBodyScript : MonoBehaviour
         }
     }
 
-    public void setIcon(bool active)
+    public void setIcon(bool active)//turns on the icon if the car is on the same height as the player
     {
         if(iconObject)
         {

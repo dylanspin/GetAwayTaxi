@@ -5,14 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class GameData 
 {
-    private int highScore = 0;
+    private int highScore = 0;//the value for the highscore
 
     public GameData()
     { 
         highScore = Values.score;
     }
 
-    public int getCurrentHigh()
+    public int getCurrentHigh()//returs the private highscore value
     {
         return highScore;
     }

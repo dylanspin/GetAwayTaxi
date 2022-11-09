@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class FollowObject : MonoBehaviour
 {
+    /*
+        Not used was for testing a way the ai cars could move.
+    */
+
+
     [Header("settings")]
     [SerializeField] private Vector3 offset;//the offset from the player where the camera should be
     [SerializeField] private Transform target;//target position

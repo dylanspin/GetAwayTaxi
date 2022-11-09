@@ -6,8 +6,8 @@ using UnityEngine;
 public class SettingData
 {
     [Header("Floats")]
-    private int musicVolume = 50;
-    private int mainVolume = 50;
+    private int musicVolume = 50;//the value for the music volume between 0 - 100
+    private int mainVolume = 50;//the value for the main overall volume between 0 - 100
 
     public SettingData(OptionController oData)
     {
@@ -15,14 +15,13 @@ public class SettingData
         mainVolume = oData.getMainSound();
     }
 
-
     //get value functions
-    public int getMusic()
+    public int getMusic()//returns the private music volume value
     {
         return musicVolume;
     }
 
-    public int getVolume()
+    public int getVolume()//returns the private main volume value
     {
         return mainVolume;
     }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EndBustedAnim : MonoBehaviour
 {
-    public void loadEndScreen()
+    public void loadEndScreen()//played at the end of the animation of the busted animation
     {
         Time.timeScale = 1;
         Time.fixedDeltaTime = 0.01388889f;

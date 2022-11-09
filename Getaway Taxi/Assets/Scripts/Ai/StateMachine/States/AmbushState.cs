@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AmbushState : State
 {
+    /*
+        Not used
+    */
     public ChaseState shaseState;
     public bool canSeePlayer;
 

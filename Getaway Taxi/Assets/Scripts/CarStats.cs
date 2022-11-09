@@ -12,11 +12,11 @@ public class CarStats : MonoBehaviour
     private Vector3 oldPos; //used for getting distance moved
 
     [Header("Private Script")]
-    private Car carScript;
+    private Car carScript;//used for getting the speed of the car
 
     [Header("Private Stats")]
-    private float distanceMoved = 0.0f;
-    private float time = 0;
+    private float distanceMoved = 0.0f;//counts distance moved
+    private float time = 0;//counts the time spend during the chase 
 
     public void setStart(Car newMovement)
     {
@@ -25,8 +25,8 @@ public class CarStats : MonoBehaviour
     
     private void Update()
     {
-        // countDistance();
-        time += 1 * Time.deltaTime;
+        // countDistance();//counts the distance moved
+        time += 1 * Time.deltaTime;//adds time to the counter
     }
 
     // private void countDistance()
@@ -37,26 +37,25 @@ public class CarStats : MonoBehaviour
     //     oldPos = transform.position;
     // }
 
-    ////////////// get data : 
+    ////////////// get data functions 
 
-    public float getMovedDistance()
-    {
-        return distanceMoved;
-    }
+    // public float getMovedDistance()
+    // {
+    //     return distanceMoved;
+    // }
 
-    public float getAccel()
+    public float getAccel()//returns the acceleration of the car
     {
         return carScript.getAccel();
     }
 
-    public float getSpeed()
+    public float getSpeed()//returns the speed of the car
     {
         return carScript.getSpeed();
     }
 
-    public float getScore()
+    public float getScore()//returns the time score
     {
         return time;
     }
-
 }

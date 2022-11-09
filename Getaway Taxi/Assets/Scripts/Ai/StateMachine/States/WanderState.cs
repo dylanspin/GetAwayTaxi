@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WanderState : State
 {
+    /*
+        Not used
+    */
     public override State runThisState()
     {
         return this;

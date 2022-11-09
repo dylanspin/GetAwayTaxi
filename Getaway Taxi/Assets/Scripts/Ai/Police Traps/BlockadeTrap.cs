@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class BlockadeTrap : MonoBehaviour
 {
+    /*
+        Not used anymore
+    */
+
     [Header("Blockade Information")]
 
     [Tooltip("")]

@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class LookAtend : MonoBehaviour
 {
+    /*
+        Looks at the end point transform
+    */
+
     [Header("Objects")]
-   
     [Tooltip("Transform of the end object")]
-    [SerializeField] private Transform endPoint;
+    [SerializeField] private Transform endPoint;//the object to look at 
 
     void Start()
     {
-        // float yAngle = Vector3.Angle(this.transform.position, endPoint.position);
-        // Vector3 defaultRot = transform.eulerAngles;
-        // defaultRot.y = yAngle;
-        // transform.LookAt(endPoint);
-        var rotation = Quaternion.LookRotation(transform.position - endPoint.position);
+        var rotation = Quaternion.LookRotation(transform.position - endPoint.position);//gets the difference rotation
         {
-            transform.rotation = rotation;
+            transform.rotation = rotation;//sets the rotation
         }
-        // defaultRot.y = transform.eulerAngles.y;
-        // transform.eulerAngles = defaultRot;
     }
-
 }

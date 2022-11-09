@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SpecialPowers : MonoBehaviour
 {
+    /*
+        Not used anymore was ment to be used for EMP or other special powers 
+    */
+
     [Header("Special Settings")]
 
     [Tooltip("Max Energy for the specials")]
@@ -103,8 +107,4 @@ public class SpecialPowers : MonoBehaviour
         StartCoroutine(timeScript.slowlySlowmo(empTimeEffect.y,empTimeEffect.x,5,-1));
     }
 
-    private void returnToNormal()
-    {
-
-    }
 }

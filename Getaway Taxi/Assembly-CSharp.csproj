@@ -37,10 +37,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportAimHandlerParabolic.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\fixPointer.cs" />
      <Compile Include="Assets\Samples\Universal RP\12.1.7\URP Package Samples\CameraStacking\3D Skybox\Scripts\SkyboxCamera.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Firebase\StartCrashlytics.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\OptionController.cs" />
+     <Compile Include="Assets\Scripts\UI\OptionController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\PassthroughProjectionSurface.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\HandMeshUI.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\Tools\InteractableTool.cs" />
@@ -88,9 +87,7 @@
      <Compile Include="Assets\Samples\Universal RP\12.1.7\URP Package Samples\RendererFeatures\KeepFrame\KeepFrameFeature.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\DebugUI\DebugUISample.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\BrushController.cs" />
-     <Compile Include="Assets\Scripts\UIController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Firebase\AnalyticsUI.cs" />
-     <Compile Include="Assets\Scripts\SteeringWheel.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\DistanceGrab\Scripts\DistanceGrabberSample.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\HandsManager.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\SceneSampler.cs" />
@@ -105,19 +102,19 @@
      <Compile Include="Assets\Scripts\Shake.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Scripts\BouncingBallLogic.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportTransitionInstant.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\EndScreen.cs" />
+     <Compile Include="Assets\Scripts\UI\EndScreen.cs" />
      <Compile Include="Assets\Scripts\Save\GameData.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\OverlayPassthrough.cs" />
      <Compile Include="Assets\Samples\Universal RP\12.1.7\CustomRenderPassFeature.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\popUp.cs" />
+     <Compile Include="Assets\Scripts\UI\popUp.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\FlashlightController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\SpatialAnchor\Scripts\AnchorHelpers.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\Tools\RayToolView.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Scripts\TrainCarBase.cs" />
      <Compile Include="Assets\Scripts\Values.cs" />
-     <Compile Include="Assets\Scripts\AudioController.cs" />
+     <Compile Include="Assets\Scripts\UI\AudioController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\Tools\RayTool.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\MainUiController.cs" />
+     <Compile Include="Assets\Scripts\UI\MainUiController.cs" />
      <Compile Include="Assets\Scripts\Ai\AiLook.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\SelectivePassthroughExperience.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Scripts\TrackSegment.cs" />
@@ -152,7 +149,7 @@
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportOrientationHandler.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Locomotion\Scripts\LocomotionSampleSupport.cs" />
      <Compile Include="Assets\Scripts\CarAudio.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\Hover.cs" />
+     <Compile Include="Assets\Scripts\UI\Hover.cs" />
      <Compile Include="Assets\Scripts\CarController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\SpatialAnchor\Scripts\SpatialAnchorLoader.cs" />
      <Compile Include="Assets\Scripts\CarStats.cs" />
@@ -168,7 +165,6 @@
      <Compile Include="Assets\Oculus\SampleFramework\Core\Video\Scripts\ButtonDownListener.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportAimHandlerLaser.cs" />
      <Compile Include="Assets\Scripts\FakeSteeringWheel.cs" />
-     <Compile Include="Assets\Scripts\Ai\PoliceAi.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\PassthroughBrush.cs" />
      <Compile Include="Assets\Scripts\CarUI.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\ColliderZone.cs" />
@@ -181,7 +177,6 @@
      <Compile Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Scripts\MyCustomSceneModelLoader.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\ButtonTriggerZone.cs" />
      <Compile Include="Assets\Scripts\EndPoint.cs" />
-     <Compile Include="Assets\Scripts\CaughtCheck.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\BoneCapsuleTriggerLogic.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\DistanceGrab\Scripts\ColorGrabbable.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Video\Scripts\MediaPlayerImage.cs" />
@@ -190,7 +185,7 @@
      <Compile Include="Assets\Scripts\Ai\StateMachine\States\AmbushState.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\StartScene\Scripts\StartMenu.cs" />
      <Compile Include="Assets\Scripts\Ai\NextPoint.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\LoadingScreen.cs" />
+     <Compile Include="Assets\Scripts\UI\LoadingScreen.cs" />
      <Compile Include="Assets\Scripts\Save\Save.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Scripts\FurnitureSpawner.cs" />
      <Compile Include="Assets\Scripts\Indicator.cs" />
@@ -198,7 +193,7 @@
      <Compile Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Scripts\WindmillBladesController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportInputHandlerTouch.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Scripts\RequestCaptureFlow.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\Ignition.cs" />
+     <Compile Include="Assets\Scripts\UI\Ignition.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\SpatialAnchor\Scripts\Anchor.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Scripts\SimpleResizer\SimpleResizer.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\Tools\InteractableToolView.cs" />
@@ -209,7 +204,7 @@
      <Compile Include="Assets\Oculus\SampleFramework\Usage\OVROverlayCanvas\Scripts\OVROverlayCanvas.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportOrientationHandler360.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportAimHandler.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\Option.cs" />
+     <Compile Include="Assets\Scripts\UI\Option.cs" />
      <Compile Include="Assets\Scripts\Ai\AiController.cs" />
      <Compile Include="Assets\Scripts\Ai\StateMachine\States\ChaseState.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\Tools\FingerTipPokeToolView.cs" />

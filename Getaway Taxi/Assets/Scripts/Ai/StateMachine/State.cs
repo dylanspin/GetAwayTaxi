@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class State : MonoBehaviour
 {
-    public abstract State runThisState();
+    public abstract State runThisState();//returns the state thats given from the overide fucntion
 }

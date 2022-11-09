@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FlipCamera : MonoBehaviour
 {
+    /*Not used anymore used to be for flipping the image of the car mirrors but doesnt work anymore in URP*/
+
     [SerializeField] private Camera camera;
     [SerializeField] private bool flipHorizontal;
 

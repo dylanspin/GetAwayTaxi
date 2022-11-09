@@ -6,10 +6,9 @@ using UnityEngine.AI;
 public class AiMovement : MonoBehaviour
 {   
     /*
-        Needed:
-
-        Patrouling the streets between points
+        Old script not used anymore
     */
+    
     [Header("AI Settings")]
 
     [Tooltip("Main AI Manager Script")]

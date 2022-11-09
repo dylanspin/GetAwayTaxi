@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class RamState : State
 {
+    /*
+        Not needed 
+    */
+
     public PatrolState patrolState;
     public bool canSeePlayer;
 
@@ -15,7 +19,6 @@ public class RamState : State
         }
         else
         {
-           
             return this;
         }
     }

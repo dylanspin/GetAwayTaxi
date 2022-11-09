@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class NextPoint : MonoBehaviour
 {
-   [SerializeField] private Transform[] nextPoints;
-   [SerializeField] private Color drawLine = Color.blue;
-   [SerializeField] private bool drawIndicator = false;
+   [SerializeField] private Transform[] nextPoints;//the next possible positions the ai can go to 
+   [SerializeField] private Color drawLine = Color.blue;//the draw color of the line
+   [SerializeField] private bool drawIndicator = false;//if it should draw a white sphere on the position to indicate the point
 
-    public Transform nextPoint()
+    public Transform nextPoint()//called when this postion is reached
     {
-        return nextPoints[Random.Range(0,nextPoints.Length)];
+        return nextPoints[Random.Range(0,nextPoints.Length)];//returns random next point 
     }
 
+
+    //for debuging the directions and making the roads enable this
     // void OnDrawGizmosSelected()
     // {
     //     if(drawIndicator)

@@ -10,22 +10,22 @@ public class AiController : MonoBehaviour
     */
     
     [Header("States data")]
-    [SerializeField] private StateManager stateScript;
-    [SerializeField] private PatrolState patrolState;
-    [SerializeField] private ChaseState chaseState;
-    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private StateManager stateScript;//the statemachine manager
+    [SerializeField] private PatrolState patrolState;//the patroling state
+    [SerializeField] private ChaseState chaseState;//the chasing the player state
+    [SerializeField] private NavMeshAgent agent;//the navmesh agent component for pathfinding on the navmesh
 
     [Header("Set private data")]
-    [SerializeField] private AiLook lookScript;
-    [SerializeField] private Transform bodyHolder;
+    [SerializeField] private AiLook lookScript;//the AI look script that checks if the player is in view
+    [SerializeField] private Transform bodyHolder;//the holder transform that holds the visual object of the AI from the scriptable object
 
     [Header("private data")]
-    private int layer = 0;
-    private bool crashedBool = false;
-    private GameObject spawnedBody;
-    private AiCarInformation aiInformation;
-    private AiManager managerScript;
-    private CarBodyScript bodyScript = null;
+    private int layer = 0;//the current layer spawned on
+    private bool crashedBool = false;//if crashed
+    private GameObject spawnedBody;//the spawned visual body of the AI 
+    private AiCarInformation aiInformation;//the scriptable object holding the information for the AI
+    private AiManager managerScript;//the manager script of all the AI in the scene
+    private CarBodyScript bodyScript = null;//the script of on the visual body of the AI 
 
     public void setStartInformation(AiCarInformation newInformation,AiManager newManager,Transform startPos,int spawnLayer)
     {   
@@ -46,28 +46,28 @@ public class AiController : MonoBehaviour
         chaseState.setStart(managerScript,aiInformation,bodyScript);
     }
 
-    public void crashed()
+    public void crashed()//sets the AI to crashed
     {
-        bodyScript.setIcon(false);
+        bodyScript.setIcon(false);//turns of the icon for the mini-map when crashed
         crashedBool = true;
     }
 
-    public void setEnable(bool active)
+    public void setEnable(bool active)//turns on or of the AI pathfinding 
     {
-        if(!crashedBool)
+        if(!crashedBool)//if the AI is not crashed
         {
             if(active)
             {
-                agent.Resume();
+                agent.Resume();//continues the pathfindinf of the AI
             }
             else
             {
-                agent.Stop();
+                agent.Stop();//stops the pathfinding of the AI
             }
         }
     }
 
-    // public void setHeight(int newHeight)
+    // public void setHeight(int newHeight)//was used when the player could still change heights between different layers
     // {
     //     bodyScript.setIcon(layer == newHeight);
     // }

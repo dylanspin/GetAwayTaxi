@@ -4,61 +4,60 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    [Header("Hover Settings")]
+    // [Header("Hover Settings")]
 
     // [Tooltip("Min hover height and Max hover height")]
     // [SerializeField] private Vector2 hoverHeights = new Vector2(0.6f,5.0f);
-    [SerializeField] private float[] hoverHeights = new float[4];
+    // [SerializeField] private float[] hoverHeights = new float[4];
 
-    [Tooltip("The speed the car goes up and down in height")]
-    [SerializeField] private float heighChangeSpeed = 2.5f;
+    // [Tooltip("The speed the car goes up and down in height")]
+    // [SerializeField] private float heighChangeSpeed = 2.5f;
 
     [Header("Car Movement Speed:")]
 
-    [Tooltip("Max Car Speed")]
-    [SerializeField] private Vector2 maxSpeed = new Vector2(50,30);
+    [Tooltip("Max Car Speed - Forward - Backwards")]
+    [SerializeField] private Vector2 maxSpeed = new Vector2(50,30);//the max for ward and backwards speed
 
     [Tooltip("Engine Forward Speed")]
-    [SerializeField] private float accelerateSpeed = 50;
+    [SerializeField] private float accelerateSpeed = 50;//the speed the car adds forward acceleration
 
     [Tooltip("Engine Reverse speed")]
-    [SerializeField] private float reverseSpeed = 25;
+    [SerializeField] private float reverseSpeed = 25;//the speed the car adds backwards acceleration 
 
     [Tooltip("When acceleration is above 0 the multiplier when breaking so the car stops faster")]
-    [SerializeField] private float breakMultiplier = 20;
+    [SerializeField] private float breakMultiplier = 4;//the multiplier of the reverse speed to stop the car faster if the acceleration is above 0
 
     [Tooltip("Engine losing speed")]
-    [SerializeField] private float loseSpeed = 25;
+    [SerializeField] private float loseSpeed = 25;//the amount of acceleration that gets lost over time when there is no input
 
-    [SerializeField] private OVRInput.Button gasInputs;
-    [SerializeField] private OVRInput.Button reverseInputs;
+    [Header("VR inputs")]
+    [SerializeField] private OVRInput.Button gasInputs;//the vr input for giving gas
+    [SerializeField] private OVRInput.Button reverseInputs;//the vr input for reverse
 
     [Header("Steering Wheel settings")]
 
     [Tooltip("Speed of what the car turns at based on the steeringwheel angle")]
-    [SerializeField] private float turnSpeed = 100;
+    [SerializeField] private float turnSpeed = 100;//multiplier the car turns
 
     [Header("Set Data")]
 
     [Tooltip("The transform of where the object gets pushed")]
-    [SerializeField] private Transform trustPos;
+    [SerializeField] private Transform trustPos;//position where the car gets boosted at
 
     [Tooltip("Rigidbody of car gameobject")]
-    [SerializeField] private Rigidbody carRb;
+    [SerializeField] private Rigidbody carRb;//the rigidbody for the car
 
     [Header("Private Scripts")]
-    private CarUI carUIScript;
-    private AiManager aiScript;
-    private FakeSteeringWheel steerinScript;
+    private CarUI carUIScript;//the in car ui controller script
+    private AiManager aiScript;//the manager of all the ai in the scene
+    private FakeSteeringWheel steerinScript;//the steering wheel script
 
     [Header("Private Data")]
-    private float defaultDrag = 0;
     private float acelleration = 0;
-    private float defaultHeight;
-    private int currentHeight = 0;
-    private int lastHeight = 0;
-    private int dir = 0;
-    private bool started = false;
+    // private float defaultHeight;
+    // private int currentHeight = 0;
+    // private int lastHeight = 0;
+    private bool started = false;//if the car has started
 
     /*
         Controls for now to test with pc : 
@@ -71,12 +70,12 @@ public class Car : MonoBehaviour
 
         controlls will be maped to controller of the vr headset
     */
+    
     public void setStart(CarUI newUi,AiManager newManager,FakeSteeringWheel newSteering)
     {
         carUIScript = newUi;
         aiScript = newManager;
-        defaultDrag = carRb.drag;
-        defaultHeight = transform.position.y;
+        // defaultHeight = transform.position.y;
         steerinScript = newSteering;
     }
 
