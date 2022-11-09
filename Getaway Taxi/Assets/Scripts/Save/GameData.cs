@@ -9,7 +9,7 @@ public class GameData
 
     public GameData()
     { 
-        highScore = Values.score;
+        highScore = Values.score;//sets the new highscore
     }
 
     public int getCurrentHigh()//returs the private highscore value

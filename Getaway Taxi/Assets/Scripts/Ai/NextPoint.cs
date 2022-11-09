@@ -13,7 +13,6 @@ public class NextPoint : MonoBehaviour
         return nextPoints[Random.Range(0,nextPoints.Length)];//returns random next point 
     }
 
-
     //for debuging the directions and making the roads enable this
     // void OnDrawGizmosSelected()
     // {
