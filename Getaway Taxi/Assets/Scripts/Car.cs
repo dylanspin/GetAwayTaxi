@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    // [Header("Hover Settings")]
 
+    // [Header("Hover Settings")]
+        
     // [Tooltip("Min hover height and Max hover height")]
     // [SerializeField] private Vector2 hoverHeights = new Vector2(0.6f,5.0f);
     // [SerializeField] private float[] hoverHeights = new float[4];
@@ -53,10 +54,13 @@ public class Car : MonoBehaviour
     private FakeSteeringWheel steerinScript;//the steering wheel script
 
     [Header("Private Data")]
-    private float acelleration = 0;
+    private float acelleration = 0;//the current acelleration of the car
+
+    //not used anymore
     // private float defaultHeight;
     // private int currentHeight = 0;
     // private int lastHeight = 0;
+
     private bool started = false;//if the car has started
 
     /*
@@ -95,18 +99,12 @@ public class Car : MonoBehaviour
 
     private void accelerate()
     {
-        bool inputForward = OVRInput.Get(gasInputs) || Input.GetKey(KeyCode.W);
-        bool inputReverse = OVRInput.Get(reverseInputs) || Input.GetKey(KeyCode.S);
+        bool inputForward = OVRInput.Get(gasInputs) || Input.GetKey(KeyCode.W);//gets gass input
+        bool inputReverse = OVRInput.Get(reverseInputs) || Input.GetKey(KeyCode.S);//gets reverse/break input
 
         float gass;
-        if(Application.isEditor)
-        {
-            gass = (inputForward ? 1 : 0) + (inputReverse ? -1 : 0);
-        }
-        else
-        {
-            gass = (inputForward? 1:0 + - (inputReverse? 1:0));
-        }
+        gass = (inputForward ? 1:0 + - (inputReverse ? 1:0));
+
         carUIScript.setCamera(gass);
         addGass(gass);
 
@@ -115,29 +113,27 @@ public class Car : MonoBehaviour
 
     private void addGass(float gass)
     {
-        
         if(gass == 0)//if no input
         {
-            acelleration = returnZero(acelleration,loseSpeed);
+            acelleration = returnZero(acelleration,loseSpeed);//returns the acceleration to 0 when there is no input
         }
         else//if has input
         {
-            float multiplier = ((gass < 0 && acelleration > 0) ? breakMultiplier : 1);
-            float carSpeed = gass > 0 ? accelerateSpeed : reverseSpeed;
+            float multiplier = ((gass < 0 && acelleration > 0) ? breakMultiplier : 1);//calculates the multiplier for the speed
+            float carSpeed = gass > 0 ? accelerateSpeed : reverseSpeed;//gets the car direction speed
 
-            acelleration += gass * carSpeed * multiplier * Time.deltaTime; 
-            acelleration = Mathf.Clamp(acelleration,-maxSpeed.y,maxSpeed.x);
+            acelleration += gass * carSpeed * multiplier * Time.deltaTime; //adds acceleration 
+            acelleration = Mathf.Clamp(acelleration,-maxSpeed.y,maxSpeed.x);//clamps accelaration
         }  
-      
     }
 
     private void steering()
     {
         transform.Rotate(Vector3.up * steerinScript.procentageAngle() * Time.deltaTime * turnSpeed);//rotates car in steering direction
-        transform.localEulerAngles = new Vector3(0,transform.localEulerAngles.y,0);
+        transform.localEulerAngles = new Vector3(0,transform.localEulerAngles.y,0);//sets new angle 
     }
 
-    private float returnZero(float currentAmount, float returnSpeed)
+    private float returnZero(float currentAmount, float returnSpeed)//return value to 0 with the given amount per call
     {   
         float addAmount = returnSpeed * Time.deltaTime;
        
@@ -168,15 +164,16 @@ public class Car : MonoBehaviour
     }
 
     //outside script functions
-
-    public void collision(float amount)
+    public void collision(float amount)//when the car collided with AI
     {
         acelleration = returnZero(acelleration,amount * 100);
     }
 
-    public void startCar(bool active)
+    public void startCar(bool active)//starts the car
     {
         started = active;
+
+        //noted used anymore used to change the height when the car started
         // if(active)
         // {
         //     changeHeight(1);
@@ -245,12 +242,12 @@ public class Car : MonoBehaviour
 
     ////////////////////// get values
 
-    public float getSpeed()//for displaying car speed
+    public float getSpeed()//returns the speed of the car so it can be displayed on the UI
     {
         return carRb.velocity.magnitude;
     }
 
-    public float getAccel()
+    public float getAccel()//returns the acceleration of the car so it can be displayed on the UI
     {
         return acelleration;
     }

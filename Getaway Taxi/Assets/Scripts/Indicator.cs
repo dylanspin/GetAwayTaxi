@@ -16,7 +16,6 @@ public class Indicator : MonoBehaviour
     {
         if(countTrigger == 0)//if there wasent anything in the trigger
         {
-            Debug.Log("Entered");
             if(behind)//if has indcator behind
             {
                 behind.setBehind(true);//sets indcator behind
